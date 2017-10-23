@@ -1,0 +1,84 @@
+<aside class="main-sidebar">
+  
+  <section class="sidebar">
+
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">Principais Funções</li>
+
+      <li class="treeview">
+        <a href="">
+          <i class="fa fa-user-circle"></i>
+          <span>Usuarios</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+
+        <ul class="treeview-menu">
+          <li>
+            <a [routerLink]="['/addUsuario']">
+              <i class="fa fa-plus-circle"></i> add usuario</a>
+          </li>
+          <li>
+            <a [routerLink]="['/users']">
+              <i class="fa fa-list"></i> listar usuario</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="">
+          <i class="fa fa-credit-card"></i>
+          <span>Cartão de credito</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+
+        <ul class="treeview-menu">
+          <li>
+            <a [routerLink]="['addCartao']"  >
+              <i class="fa fa-plus-circle"></i> novo cartão</a>
+          </li>
+          <li>
+            <a [routerLink]="['cards']">
+              <i class="fa fa-list"></i> listar cartões</a>
+          </li>
+          <li>
+            <a [routerLink]="['bills']">
+              <i class="fa fa-credit-card-alt"></i> ver fatura</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="">
+          <i class="fa fa-cart-plus"></i>
+          <span>Lançamentos</span>
+
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+
+        <ul class="treeview-menu">
+          <li>
+            <a [routerLink]="['register']">
+              <i class="fa fa-plus-circle"></i> novo lançamento</a>
+          </li>
+          <li>
+            <a [routerLink]="['registers']">
+              <i class="fa fa-calendar"></i> lançamentos mensais</a>
+          </li>
+          <li>
+            <a [routerLink]="['resume']">
+              <i class="fa fa-file-excel-o"></i> Resumo do periodo</a>
+          </li>
+        </ul>
+      </li>
+
+      <li><a (click)="logout()"><i class="fa fa-sign-out fa-lg"></i> <span>Sair</span></a></li>
+
+    </ul>
+  </section>
+</aside>

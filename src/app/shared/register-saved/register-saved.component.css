@@ -1,0 +1,19 @@
+.saved-section{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.saved-panel{
+    display: flex;
+    justify-content: center;
+    flex-basis: 98%;
+    padding: 20px;
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.saved-panel p{
+    padding: 10%;
+    width: 450px;
+}

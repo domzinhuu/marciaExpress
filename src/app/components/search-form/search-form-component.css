@@ -1,0 +1,23 @@
+.search-form{
+    display: flex;
+    padding-bottom:10px;
+
+}
+
+.search-form .form-inline{
+    display: flex;
+    width: 100%;
+}
+
+.search-form input{
+    width: 100%;
+}
+
+.search-form .form-inline .input-group{
+    width: 50%;
+    margin-right: 10px;
+}
+
+.search-form .form-inline button{
+    flex-basis: 1;
+}

@@ -1,0 +1,32 @@
+<section class="login-section">
+  <form [formGroup]="loginForm">
+    <div class="box box-success form-login">
+      <div class="box-header text-center with-border">
+        <h2 class="box-title">
+          <i class="fa fa-sellsy fa-lg"></i> Marcia Express
+        </h2>
+      </div>
+
+      <div class="box-body">
+
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <p>Para acessar é necessario estar logado!</p>
+          </div>
+          <div [class.has-error]="loginForm.get('username').hasError('required') && submited" class="col-xs-12 form-group">
+            <input formControlName="username" type="text" class="form-control input-lg" placeholder="Usuario">
+          </div>
+
+          <div [class.has-error]="loginForm.get('password').hasError('required') && submited" class="col-xs-12 form-group">
+            <input formControlName="password" type="password" class="form-control input-lg" placeholder="Senha">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="box-footer text-center">
+        <button (click)="login()" class="btn btn-success btn-large">Entrar</button>
+      </div>
+    </div>
+  </form>
+</section>

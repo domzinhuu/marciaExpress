@@ -1,0 +1,29 @@
+<table [class]="classes">
+    <thead>
+      <tr>
+        <th>Data Compra</th>
+        <th>Produto</th>
+        <th>Local da compra</th>
+        <th>Valor</th>
+        <th class="text-center">Funções</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let register of registers">
+        <td>{{register.buyAt | date:'dd/MM/yyyy'}}</td>
+        <td>
+          <span class="text-muted">{{register.actual}}</span> {{register.productName}}</td>
+        <td>{{register.local}}</td>
+        <td class="text-normal">{{register.value | currency:'BRL':true}}</td>
+        <td class="text-center">
+          <a [href]="register.id" class="btn btn-success btn-sm">
+            <i class="fa fa-info-circle"></i>
+          </a>
+        </td>
+      </tr>
+      <tr *ngIf="registers?.length == 0">
+          <td colspan="5" class="text-center">Nenhum registro foi feito para este periodo.</td>
+      </tr>
+    </tbody>
+  </table>

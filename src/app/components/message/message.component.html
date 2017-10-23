@@ -1,0 +1,7 @@
+<div *ngIf="messages"  [class.alert-danger]="!hasSuccess" [class.alert-success]="hasSuccess" class="alert alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <span *ngFor="let msg of messages"><strong>{{hasSuccess?'Ok':'Ops'}}</strong> {{msg}}</span>
+    
+  </div>

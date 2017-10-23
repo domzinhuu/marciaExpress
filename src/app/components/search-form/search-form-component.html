@@ -1,0 +1,12 @@
+<section class="search-form">
+    <div class="form-inline">
+        <div class="input-group">
+            <input [(ngModel)]="query" type="text" class="form-control" [placeholder]="placeholder">
+            <span class="input-group-btn">
+                <button type="submit" (click)="emitSearchEvent()" name="search" id="search-btn" class="btn btn-success">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</section>

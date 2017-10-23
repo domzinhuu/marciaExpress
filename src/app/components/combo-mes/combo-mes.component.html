@@ -1,0 +1,12 @@
+<select [id]="idElement" [(ngModel)]="selectedMonth" (change)="changeMonthEmit()" [class]="classes">
+  <option *ngFor="let month of months" [value]="month">{{month}}</option>
+</select>
+<section class="box-year" *ngIf="showYearBox">
+  <span class="year">{{actualYear}}</span>
+  <button (click)="yearUp()" title="Alterar o ano" class="btn btn-warning btn-sm">
+    <i class="fa fa-caret-up"></i>
+  </button>
+  <button (click)="yearDown()" title="Alterar o ano" class="btn btn-warning btn-sm">
+    <i class="fa fa-caret-down"></i>
+  </button>
+</section>
