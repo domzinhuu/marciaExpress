@@ -1,0 +1,35 @@
+.form-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.user-form{
+    flex-basis: 98%;
+    padding: 20px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.user-form article{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-form article .little-info{
+    flex-basis: 50%;
+}
+
+
+.avatar{
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

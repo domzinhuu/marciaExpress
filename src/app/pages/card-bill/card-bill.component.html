@@ -1,0 +1,23 @@
+<section class="bill-section">
+  <div class="bill-panel box box-success">
+    <div class="box-header with-border">
+      <div class="search-box">
+        <h2 class="box-title">Faturas</h2>
+
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="card">Cartão</label>
+            <me-combo-cartao (setCard)="setCard($event)" [idElement]="'card'" [classes]="'form-control'"></me-combo-cartao>
+            <label for="period" class="search-label">Periodo</label>
+            <me-combo-mes [showYearBox]="true" (setPeriod)="setPeriod($event)" [idElement]="'period'" [classes]="'form-control'"></me-combo-mes>
+          </div>
+          <button (click)="doSearch()" class="btn btn-success btn-sm"><i class="fa fa-search fa-lg"></i> buscar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="box-body">
+      <me-register-table [registers]="registersView" [classes]="'table table-responsive table-striped table-bordered'"></me-register-table>
+    </div>
+  </div>
+</section>

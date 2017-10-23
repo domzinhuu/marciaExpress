@@ -1,0 +1,29 @@
+.resume-section{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.resume-panel{
+    flex-basis: 98%;
+    padding: 20px;
+}
+
+table tbody tr td{
+    font-size: 18px;
+    font-weight: normal;
+    padding: 10px 0;
+}
+.footer-total td{
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+
+.box-body{
+    display: flex;
+    justify-content: center;
+}
+
+.box-body p {
+    padding: 20px;
+}

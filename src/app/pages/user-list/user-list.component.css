@@ -1,0 +1,28 @@
+.userlist-section{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.userlist{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    flex-basis: 98%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.list{
+    display: flex;
+    flex-grow: 1;
+}
+
+.list-item{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+}

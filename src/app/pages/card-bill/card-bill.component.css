@@ -1,0 +1,10 @@
+.bill-section{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.bill-panel{
+    flex-basis: 98%;
+    padding: 20px;
+}

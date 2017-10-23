@@ -1,0 +1,110 @@
+<section class="content-principal">
+
+  <div class="funcoes">
+
+    <div class="box box-success funcao usuario">
+      <div class="box-header with-border">
+        <h2 class="home-title">Novo Usuario</h2>
+      </div>
+
+      <div class="box-body">
+        <p>Acesse aqui para adicionar um novo usuario a sua lista de compradores, dessa forma você poderá lançar comprar para
+          ele.
+        </p>
+      </div>
+
+      <div class="box-footer">
+        <button class="btn btn-success">Acessar</button>
+      </div>
+    </div>
+
+    <div class="box box-success funcao lancamento">
+      <div class="box-header with-border">
+        <h2 class="home-title">Registre Lançamentos</h2>
+      </div>
+
+      <div class="box-body">
+        <p>Alguem comprou algo com seus cartões? então acesse aqui, lance esta compra e mantenha seu controle dos gastos.</p>
+      </div>
+
+      <div class="box-footer">
+        <button class="btn btn-success ">Acessar</button>
+      </div>
+    </div>
+
+    <div class="box box-success funcao cartao">
+      <div class="box-header with-border">
+        <h2 class="home-title">Cadastre um Cartão</h2>
+      </div>
+
+      <div class="box-body">
+        <p>Para registrar seus lançamentos é necessario ter os cartões cadastrado, então acesse aqui e cadastre um novo cartão.</p>
+      </div>
+
+      <div class="box-footer">
+        <button class="btn btn-success ">Acessar</button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="estatisticas">
+
+    <div class="box box-success principais">
+      <div class="box-header with-border">
+        <h2 class="home-title">Principais Compradores</h2>
+      </div>
+      <div class="box-body">
+        <ul>
+          <li *ngFor="let user of bestUsers">
+            <div [class.impar]="user.id % 2 != 0" class="list">
+              <span>
+                <i class="fa fa-trophy {{user.position}}"></i> {{user.name}}</span>
+              <a href="{{user.id}}">Ver detalhes</a>
+            </div>
+          </li>
+        </ul>
+        <p *ngIf="bestUsers.length == 0">Nenhuma estatisticas para este item.</p>
+      </div>
+    </div>
+
+    <div class="box box-success principais">
+      <div class="box-header with-border">
+        <h2 class="home-title">Cartões mais utilizados</h2>
+      </div>
+
+      <div class="box-body">
+        <ul>
+          <li *ngFor="let card of bestCards">
+            <div [class.impar]="card.id % 2 != 0" class="list">
+              <span>
+                <i class="fa fa-trophy {{card.position}}"></i> {{card.name}}</span>
+              <a href="{{card.id}}">Ver detalhes</a>
+            </div>
+          </li>
+        </ul>
+        <p *ngIf="bestCards.length == 0">Nenhuma estatisticas para este item.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class=" notificacoes">
+
+    <div class="box box-warning notify-container">
+      <div class="box-header with-border">
+        <h2 class="home-title">Notificações</h2>
+      </div>
+
+      <div class="box-body">
+        <div *ngFor="let notify of notifications" [class.impar]="notify.usuario.id % 2 != 0" class="list">
+          <span>{{notify.data}}</span>
+          <span class="notify">{{notify.usuario.name}} {{notify.action}}</span>
+          <a href="{{notify.usuario.id}}">Lançar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

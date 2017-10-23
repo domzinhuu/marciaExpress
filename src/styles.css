@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700');
+
+body{
+    font-family: 'Raleway',sans-serif;
+}
+
+h2.home-title{
+    font-size: 22px;
+}
+
+nav,ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.impar{
+    background-color: rgba(211, 211, 211, 0.623);
+}
+
+.mY-10{
+    margin: 10px 0;
+}
+
+.list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bg-dark{
+    color: white;
+    background-color: #222d32;
+}
+.btn-large{
+    padding: 10px 40px;
+}
+
+.part-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.text-gold{
+    color: gold;
+}
+
+.text-silver{
+    color: silver;
+}
+
+.text-normal{
+    font-family: sans-serif;
+}
+
+.content-wrapper{
+    position: relative;
+}
+
+.search-box{
+    display: flex;
+    align-items: center;
+}
+
+.box-title{
+    flex-basis: 30%;
+}
+.search-label{
+    padding: 0 5px 0 20px;
+}

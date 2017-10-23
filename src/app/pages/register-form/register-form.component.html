@@ -1,0 +1,73 @@
+<section class="register-section">
+  <form [formGroup]="registerForm" class="register-form box box-success">
+    <div class="box-heade with-border">
+      <h2 class="box-title">Novo Lançamento</h2>
+    </div>
+
+    <div class="box-body">
+      <p>Registre todas as suas compras e dos seus clientes para ter os dados sempre atualizado nas faturas</p>
+
+      <me-message [messages]="messages" [hasSuccess]="hasSucess"></me-message>
+      <div class="row">
+        <div [class.has-error]="registerForm.get('productName').hasError('required') && submited" class="col-sm-6 col-xs-12 form-group">
+          <label for="productName">Nome do Produto</label>
+          <input formControlName="productName" type="text" id="productName" class="form-control">
+        </div>
+
+        <div [class.has-error]="registerForm.get('local').hasError('required') && submited" class="col-sm-6 col-xs-12 form-group">
+          <label for="local">Local da Compra</label>
+          <input formControlName="local" type="text" id="local" class="form-control">
+        </div>
+
+        <div [class.has-error]="registerForm.get('buyAt').hasError('required') && submited" class="col-sm-3 col-xs-12 form-group">
+          <label for="buyAt">Data da compra</label>
+          <input formControlName="buyAt" type="date" id="buyAt" class="form-control">
+        </div>
+
+        <div [class.has-error]="registerForm.get('creditCard').hasError('required') && submited" class="col-sm-3 col-xs-12 form-group">
+          <label for="creditcard">Cartão</label>
+          <me-combo-cartao [classes]="'form-control'" (setCard)="changeCard($event)"></me-combo-cartao>
+        </div>
+
+        <div [class.has-error]="registerForm.get('value').hasError('required') && submited" class="col-sm-4 col-xs-12 form-group">
+          <label for="value">Valor</label>
+          <input formControlName="value" type="number" id="value" class="form-control">
+        </div>
+
+        <div [class.has-error]="registerForm.get('installmentNumber').hasError('required') && submited" class="col-sm-2 col-xs-12 form-group">
+          <label for="installmentNumber">Parcelas</label>
+          <select formControlName="installmentNumber" id="installmentNumber" class=form-control>
+            <option value="1">1x</option>
+            <option value="2">2x</option>
+            <option value="3">3x</option>
+            <option value="4">4x</option>
+            <option value="5">5x</option>
+            <option value="6">6x</option>
+            <option value="7">7x</option>
+            <option value="8">8x</option>
+            <option value="9">9x</option>
+            <option value="10">10x</option>
+            <option value="11">11x</option>
+            <option value="12">12x</option>
+          </select>
+        </div>
+
+
+        <div [class.has-error]="registerForm.get('user').hasError('required') && submited" class="col-sm-6 col-xs-12 form-group">
+          <label for="user">Comprador</label>
+          <me-combo-usuario (setUser)="changeUser($event)" [classes]="'form-control'"></me-combo-usuario>
+        </div>
+
+        <div [class.has-error]="registerForm.get('paymentMonth').hasError('required') && submited" class="col-sm-6 col-xs-12 form-group">
+          <label for="paymentMonth">Pagar em</label>
+          <me-combo-mes [idElement]="'paymentMonth'" [classes]="'form-control'" (setPeriod)="changeMonth($event)"></me-combo-mes>
+        </div>
+
+        <div class="col-sm-12 form-group text-center">
+          <button (click)="addRegister()" class="btn btn-success btn-large">Registrar</button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</section>
