@@ -10,18 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  usuarios:Usuario[]
+  usuarios: Usuario[]
 
-  constructor(private usuarioService:UsuarioService) { }
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-   this.searchUser();
+    this.searchUser();
   }
 
-  searchUser(query?:string){
-    this.usuarioService.usuarios(query).subscribe(result =>{
+  searchUser(query?: string) {
+    this.usuarioService.usuarios(query).subscribe(result => {
       this.usuarios = result.data
     });
   }
 
+  deactivateUser(id: string) {
+    const result = confirm('Ao desativar o usuario, não será posivel lançar compras para ele. Deseja realmente fazer isso?')
+    this.changeStatus(id, result)
+  }
+
+  activateUser(id: string) {
+    const result = confirm('Deseja realmente reativar este usuario?')
+    this.changeStatus(id, result)
+  }
+
+
+  private changeStatus(id: string, change: boolean) {
+    if (change) {
+      this.usuarioService.changeStatus(id).subscribe(result => {
+        this.searchUser()
+        alert('Operação concluida!')
+      })
+    }
+
+  }
 }

@@ -25,15 +25,18 @@
             <td>{{user?.cellphone}}</td>
             <td>{{user?.username}}</td>
             <td class="text-center">
-              <a href="/users/edit/{{user?._id}}" title="Editar" class="btn btn-sm btn-success">
+              <a [routerLink]="['/users/edit/',user._id]" title="Editar" class="btn btn-sm btn-success">
                 <i class="fa fa-edit"></i>
               </a>
-              <a  [routerLink]="['/users',user._id]" title="Detalhes" class="btn btn-sm btn-warning">
+              <a  [routerLink]="['/users/details/',user._id]" title="Detalhes" class="btn btn-sm btn-warning">
                 <i class="fa fa-info-circle"></i>
               </a>
-              <a href="/users/delete/{{user?._id}}" title="Remover" class="btn btn-sm btn-danger">
+              <button (click)="deactivateUser(user._id)" *ngIf="user?.active"  title="Remover" class="btn btn-sm btn-danger">
                 <i class="fa fa-remove"></i>
-              </a>
+              </button>
+              <button (click)="activateUser(user._id)" *ngIf="!user?.active"  title="Remover" class="btn btn-sm btn-info">
+                  <i class="fa fa-eye"></i>
+                </button>
             </td>
           </tr>
           <tr *ngIf="usuarios?.length == 0">

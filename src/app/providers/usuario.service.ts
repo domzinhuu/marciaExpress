@@ -18,15 +18,28 @@ export class UsuarioService {
   }
 
   save(usuario: Usuario): Observable<Result> {
+    if (usuario._id) {
+      return this.http.put<Result>(this.endPoint, usuario)
+    }
+
     return this.http.post<Result>(this.endPoint, usuario)
   }
 
-  usuarios(query: string = ''): Observable<Result> {
+  usuarios(query: string = '', active?: boolean): Observable<Result> {
+
     let params = new HttpParams().set('query', query)
-    return this.http.get<Result>(this.endPoint, { params})
+    if (active != undefined) {
+      params = params.append('active', active ? 'true' : 'false')
+    }
+
+    return this.http.get<Result>(this.endPoint, { params })
   }
 
-  getUsuario(id:string):Observable<Result>{
+  changeStatus(id: string): Observable<Result> {
+    return this.http.put<Result>(`${this.endPoint}/status/${id}`, {})
+  }
+
+  getUsuario(id: string): Observable<Result> {
     return this.http.get<Result>(`${this.endPoint}/${id}`)
   }
 

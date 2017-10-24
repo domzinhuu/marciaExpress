@@ -19,7 +19,7 @@ export class ComboUsuarioComponent implements OnInit {
   constructor(private userService:UsuarioService) { }
 
   ngOnInit() {
-    this.userService.usuarios().subscribe(result=>{
+    this.userService.usuarios('',true).subscribe(result=>{
       this.users = result.data
     })
   }

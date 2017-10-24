@@ -8,5 +8,6 @@ export interface Usuario {
     password:string
     spendTotal:number
     profileImg:string
+    active:boolean
     isAdmin:boolean
 }
