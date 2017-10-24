@@ -16,7 +16,7 @@
 
         <ul class="treeview-menu">
           <li>
-            <a [routerLink]="['/addUsuario']">
+            <a [routerLink]="['/users/add']">
               <i class="fa fa-plus-circle"></i> add usuario</a>
           </li>
           <li>
@@ -37,15 +37,15 @@
 
         <ul class="treeview-menu">
           <li>
-            <a [routerLink]="['addCartao']"  >
+            <a [routerLink]="['/cards/add']"  >
               <i class="fa fa-plus-circle"></i> novo cartão</a>
           </li>
           <li>
-            <a [routerLink]="['cards']">
+            <a [routerLink]="['/cards']">
               <i class="fa fa-list"></i> listar cartões</a>
           </li>
           <li>
-            <a [routerLink]="['bills']">
+            <a [routerLink]="['/cards/bills']">
               <i class="fa fa-credit-card-alt"></i> ver fatura</a>
           </li>
         </ul>
@@ -63,15 +63,15 @@
 
         <ul class="treeview-menu">
           <li>
-            <a [routerLink]="['register']">
+            <a [routerLink]="['/registers/add']">
               <i class="fa fa-plus-circle"></i> novo lançamento</a>
           </li>
           <li>
-            <a [routerLink]="['registers']">
+            <a [routerLink]="['/registers']">
               <i class="fa fa-calendar"></i> lançamentos mensais</a>
           </li>
           <li>
-            <a [routerLink]="['resume']">
+            <a [routerLink]="['/registers/resume']">
               <i class="fa fa-file-excel-o"></i> Resumo do periodo</a>
           </li>
         </ul>

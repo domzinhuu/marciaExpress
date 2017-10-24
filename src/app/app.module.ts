@@ -34,7 +34,8 @@ import { ComboCartaoComponent } from './components/combo-cartao/combo-cartao.com
 import { ComboMesComponent } from './components/combo-mes/combo-mes.component';
 import { RegisterSavedComponent } from './shared/register-saved/register-saved.component';
 import { RegisterTableComponent } from './components/register-table/register-table.component';
-import { RegisterResumeComponent } from './pages/register-resume/register-resume.component'
+import { RegisterResumeComponent } from './pages/register-resume/register-resume.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component'
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { RegisterResumeComponent } from './pages/register-resume/register-resume
     ComboMesComponent,
     RegisterSavedComponent,
     RegisterTableComponent,
-    RegisterResumeComponent
+    RegisterResumeComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

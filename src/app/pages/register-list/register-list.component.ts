@@ -20,34 +20,28 @@ export class RegisterListComponent implements OnInit {
   constructor(private registerService: RegisterService) { }
 
   ngOnInit() {
-    this.updateRegister();
+    this.actualMonth = MONTHS[new Date().getMonth()]
+    this.actualYear = new Date().getFullYear()
+
+    this.updateRegisters();
   }
 
-  updateRegister(period?: any) {
-    if (!period) {
-      period = {
-        month: MONTHS[new Date().getMonth()],
-        year: new Date().getFullYear()
-      }
-    }
+  setPeriod(period: any) {
+    this.actualMonth = period.month
+    this.actualYear = period.year
+  }
 
-    this.registerService.getRegisters(period.month, period.year).subscribe(regs => {
+  updateRegisters() {
+    this.registerService.getRegisters(this.actualMonth, this.actualYear).subscribe(regs => {
 
       this.total = 0
       this.registers = _.orderBy(regs, ['buyAt'], ['asc'])
       this.registersView = _.map(this.registers, (elem) => {
-        let register = this.buildRegisterView(elem, period.month, period.year)
-
+        let register = new RegisterView(elem, this.actualMonth, this.actualYear)
         this.total += register.value
-
         return register
       })
 
     })
-  }
-
-  private buildRegisterView(register: Register, month: string, year: number) {
-    let registerView = new RegisterView(register, month, year);
-    return registerView
   }
 }

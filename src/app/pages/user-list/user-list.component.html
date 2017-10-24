@@ -28,7 +28,7 @@
               <a href="/users/edit/{{user?._id}}" title="Editar" class="btn btn-sm btn-success">
                 <i class="fa fa-edit"></i>
               </a>
-              <a href="/users/detail/{{user?._id}}" title="Detalhes" class="btn btn-sm btn-warning">
+              <a  [routerLink]="['/users',user._id]" title="Detalhes" class="btn btn-sm btn-warning">
                 <i class="fa fa-info-circle"></i>
               </a>
               <a href="/users/delete/{{user?._id}}" title="Remover" class="btn btn-sm btn-danger">

@@ -1,3 +1,4 @@
+import { MONTHS } from '../../utils/variables.utils';
 import { Router } from '@angular/router';
 import { Result } from './../../models/result.model';
 import { fail } from 'assert';
@@ -27,7 +28,7 @@ export class RegisterFormComponent implements OnInit {
       value: this.fb.control('', Validators.required),
       creditCard: this.fb.control('', Validators.required),
       user: this.fb.control('', Validators.required),
-      paymentMonth: this.fb.control('', Validators.required),
+      paymentMonth: this.fb.control(MONTHS[new Date().getMonth()], Validators.required),
       installmentNumber:this.fb.control(1,Validators.required)
     })
   }
@@ -37,9 +38,6 @@ export class RegisterFormComponent implements OnInit {
     if (this.registerForm.invalid) return;
 
     this.registerService.addRegister(this.registerForm.value).subscribe(result => {
-      /* this.submited = false
-      this.messages = result.messages
-      this.hasSucess = true */
       this.router.navigate(['/saved'])
 
     }, (fail: Result) => {

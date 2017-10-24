@@ -1,3 +1,4 @@
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { RegisterResumeComponent } from './pages/register-resume/register-resume.component';
 import { RegisterSavedComponent } from './shared/register-saved/register-saved.component';
 import { LoggedInGuard } from './security/loggedin.guard';
@@ -15,23 +16,23 @@ import { Routes } from '@angular/router'
 
 
 export const ROUTES: Routes = [
-    { path: '', redirectTo: "/home",pathMatch:'full'},
+    { path: '', redirectTo: "/home", pathMatch: 'full' },
     { path: 'login/:to', component: LoginComponent },
     { path: 'login', component: LoginComponent },
     {
         path: '', canActivate: [LoggedInGuard], children: [
             { path: 'home', component: HomeComponent },
             { path: 'saved', component: RegisterSavedComponent },
-            { path: 'addUsuario', component: UserFormComponent },
-            { path: 'users/:id', component: UserListComponent },
+            { path: 'users/add', component: UserFormComponent },
+            { path: 'users/:id', component: UserDetailComponent },
             { path: 'users', component: UserListComponent },
-            { path: 'addCartao', component: CardFormComponent },
+            { path: 'cards/add', component: CardFormComponent },
+            { path: 'cards/bills', component: CardBillComponent },
             { path: 'cards/:slug', component: CardListComponent },
             { path: 'cards', component: CardListComponent },
-            { path: 'bills', component: CardBillComponent },
-            { path: 'register', component: RegisterFormComponent },
+            { path: 'registers/add', component: RegisterFormComponent },
+            { path: 'registers/resume', component: RegisterResumeComponent },
             { path: 'registers', component: RegisterListComponent },
-            { path: 'resume', component: RegisterResumeComponent },
         ]
     }
 ]

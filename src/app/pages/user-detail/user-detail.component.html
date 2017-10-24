@@ -1,0 +1,57 @@
+<section class="user-detail-section">
+
+  <div class="box box-success user-detail-panel">
+    <div class="box-header with-border">
+      <h2 class="box-title">{{user?.completeName}}</h2>
+      
+      <a [routerLink]="['/users']" class="btn btn-warning btn-sm"><i class="fa fa-chevron-left"></i> Voltar</a>
+    </div>
+
+    <div class="box-body">
+      <div class="info-box celphone">
+        <span class="info-box-icon bg-green">
+          <i class="fa fa-user"></i>
+        </span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Celular</span>
+          <span class="info-box-number text-normal">{{user?.cellphone}}</span>
+          <span class="">@{{user?.username}}</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <span class="info-box-icon bg-blue">
+          <i class="fa fa-money"></i>
+        </span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Total gasto até o momento</span>
+          <span class="info-box-number text-normal">{{(user?.spendTotal / 100) | currency:'BRL':true}}</span>
+        </div>
+      </div>
+
+      <div class="search-box pd-top box-footer">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="cardId">Cartão</label>
+            <me-combo-cartao (setCard)="setCard($event)" [idElement]="'cardId'" [classes]="'form-control'"></me-combo-cartao>
+            <label for="period">Periodo</label>
+            <me-combo-mes (setPeriod)="setPeriod($event)" [showYearBox]="'true'" [idElement]="'period'" [classes]="'form-control'"></me-combo-mes>
+            <button (click)="updateRegister()" class="btn btn-success btn-sm">
+              <i class="fa fa-search"></i> buscar</button>
+          </div>
+        </form>
+
+        <me-register-table [registers]="registers" [classes]="'table table-responsive table-bordered table-striped'"></me-register-table>
+      </div>
+
+      <div class="box-footer box-bottom">
+        <span>Total: </span>
+        <span class="text-normal">{{total/100 |currency:'BRL':true}}</span>
+      </div>
+
+
+    </div>
+  </div>
+
+</section>

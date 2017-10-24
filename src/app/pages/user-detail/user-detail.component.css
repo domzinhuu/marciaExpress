@@ -1,0 +1,39 @@
+.user-detail-section{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.user-detail-panel{
+    flex-basis: 98%;
+    padding: 20px;
+}
+
+.box-header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.box-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.info-box{
+    flex-basis: 49%;
+}
+
+.pd-top{
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+me-register-table{
+    width: 100%;
+    margin-top: 10px;
+}

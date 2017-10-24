@@ -11,18 +11,8 @@
 
 .form-inline{
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
 }
 
 .form-inline label{
     padding-right: 10px;
-}
-.label-span{
-    font-size: 22px;
-}
-.value-span{
-    font-size: 28px;
-    padding: 10px;
-    font-family: sans-serif;
 }

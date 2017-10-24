@@ -6,7 +6,7 @@ export class Register {
     local: string
     registeredAt: Date
     buyAt: Date
-    value: number
+    value: string
     creditCard: string
     user: string
     paymentMonth: string
@@ -20,6 +20,7 @@ export class RegisterView {
     productName: string
     local: string
     value: number
+    valueString:string
     actual: string
 
     constructor(register: Register, month, year) {
@@ -28,7 +29,8 @@ export class RegisterView {
         this.buyAt = register.buyAt
         this.productName = register.productName
         this.local = register.local
-        this.value = installment.value
+        this.value = (installment.value / 100)
+        this.valueString = (installment.value / 100).toFixed(2)
         this.actual = `(${installment.number}/${register.installmentNumber})`
     }
 }

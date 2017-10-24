@@ -13,20 +13,21 @@ import { Injectable } from '@angular/core';
 export class UsuarioService {
 
   endPoint = `${ME_API}/users`
-  loggedUser: LoggedUser
 
-  constructor(private http: HttpClient, private authService: AuthenticationService) {
-    this.loggedUser = authService.getUserLogged()
+  constructor(private http: HttpClient) {
   }
 
   save(usuario: Usuario): Observable<Result> {
-    console.log(usuario)
     return this.http.post<Result>(this.endPoint, usuario)
   }
 
   usuarios(query: string = ''): Observable<Result> {
     let params = new HttpParams().set('query', query)
     return this.http.get<Result>(this.endPoint, { params})
+  }
+
+  getUsuario(id:string):Observable<Result>{
+    return this.http.get<Result>(`${this.endPoint}/${id}`)
   }
 
 }

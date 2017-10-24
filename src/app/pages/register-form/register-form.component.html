@@ -31,7 +31,7 @@
 
         <div [class.has-error]="registerForm.get('value').hasError('required') && submited" class="col-sm-4 col-xs-12 form-group">
           <label for="value">Valor</label>
-          <input formControlName="value" type="number" id="value" class="form-control">
+          <input formControlName="value" type="text" id="value" class="form-control">
         </div>
 
         <div [class.has-error]="registerForm.get('installmentNumber').hasError('required') && submited" class="col-sm-2 col-xs-12 form-group">

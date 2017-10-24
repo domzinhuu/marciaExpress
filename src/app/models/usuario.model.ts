@@ -6,6 +6,7 @@ export interface Usuario {
     cellphone:string
     username:string
     password:string
+    spendTotal:number
     profileImg:string
     isAdmin:boolean
 }

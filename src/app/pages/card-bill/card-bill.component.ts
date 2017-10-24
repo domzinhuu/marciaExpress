@@ -17,6 +17,7 @@ export class CardBillComponent implements OnInit {
   month:string
   year:number
   cardId:string
+  total:number = 0
 
   constructor(private registerService: RegisterService) { }
 
@@ -43,9 +44,14 @@ export class CardBillComponent implements OnInit {
   }
 
   updateRegister() {
+    this.total = 0
     this.registerService.getRegisters(this.month,this.year,this.cardId).subscribe(regs => {
       this.registers = regs
-      this.registersView = _.map(regs,(item)=> new RegisterView(item,this.month,this.year))
+      this.registersView = _.map(regs,(item)=>{
+        
+        this.total += item.installments[0].value
+        return new RegisterView(item,this.month,this.year)
+      })
     })
   }
 
