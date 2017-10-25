@@ -32,7 +32,7 @@ export const ROUTES: Routes = [
             { path: 'cards/add', component: CardFormComponent },
             { path: 'cards/bills', component: CardBillComponent },
             { path: 'cards/:slug', component: CardFormComponent },
-            { path: 'cards/detail/:slug', component: CardDetailComponent },
+            { path: 'cards/detail/:id', component: CardDetailComponent },
             { path: 'cards', component: CardListComponent },
             { path: 'registers/add', component: RegisterFormComponent },
             { path: 'registers/resume', component: RegisterResumeComponent },

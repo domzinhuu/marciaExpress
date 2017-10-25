@@ -1,3 +1,4 @@
+import { HomeService } from './providers/home.service';
 import { ApplicationErrorHandler } from './app.error-handler';
 import { AuthInterceptor } from './security/interceptors/auth.interceptor';
 import { RegisterService } from './providers/register.service';
@@ -94,6 +95,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     LoggedInGuard,
     CardService,
     RegisterService,
+    HomeService,
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
     { provide: ErrorHandler, useClass: ApplicationErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -1,3 +1,5 @@
+import _ from 'lodash'
+import { HomeService } from './../../providers/home.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,86 +9,99 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  bestUsers = []
-  bestCards = []
-  notifications = []
+  bestUsers:any[] = []
+  bestCards:any[] = []
+  notifications:any[] = []
 
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
   ngOnInit() {
-    this.mockupValues()
+    this.getBestUsers()
+    this.getBestCards()
   }
 
 
-  private mockupValues(){
+  private getBestUsers() {
+    this.homeService.getBestUsers().subscribe(users => {
+       this.bestUsers = users
+    })
+  }
+
+  private getBestCards(){
+    this.homeService.getBestCards().subscribe(cards=>{
+      this.bestCards = cards
+    })
+  }
+
+  private mockupValues() {
     const maique = {
-      id:1,
-      name:'Maique Rosa',
-      position:'text-gold'
+      id: 1,
+      name: 'Maique Rosa',
+      position: 'text-gold'
     }
 
     const ingrid = {
-      id:2,
-      name:'Ingrid Azevedo',
-      position:'text-silver'
+      id: 2,
+      name: 'Ingrid Azevedo',
+      position: 'text-silver'
     }
 
     const paula = {
-      id:3,
-      name:'Paula Fernandes',
-      position:'text-warning'
+      id: 3,
+      name: 'Paula Fernandes',
+      position: 'text-warning'
     }
 
-    this.bestUsers.push(maique,ingrid,paula)
+    this.bestUsers.push(maique, ingrid, paula)
 
     const masterItau = {
-      id:1,
-      name:'Mastercard Itau - dia 05',
-      position:'text-gold'
+      id: 1,
+      name: 'Mastercard Itau - dia 05',
+      position: 'text-gold'
     }
 
     const santander = {
-      id:2,
-      name:'Santander - dia 12',
-      position:'text-silver'
+      id: 2,
+      name: 'Santander - dia 12',
+      position: 'text-silver'
     }
 
     const visaGold = {
-      id:3,
-      name:'Visa Gold - dia 23',
-      position:'text-warning'
+      id: 3,
+      name: 'Visa Gold - dia 23',
+      position: 'text-warning'
     }
 
-    this.bestCards.push(masterItau,santander,visaGold)
+    this.bestCards.push(masterItau, santander, visaGold)
 
     const notify = {
-      data:'16/10/2017',
-      usuario:{
-        id:1,
-        name:'Maique Rosa'
+      data: '16/10/2017',
+      usuario: {
+        id: 1,
+        name: 'Maique Rosa'
       },
-      action:'realizou uma nova compra'
+      action: 'realizou uma nova compra'
     }
 
     const notify2 = {
-      data:'16/10/2017',
-      usuario:{
-        id:2,
-        name:'Ingrid Azevedo'
+      data: '16/10/2017',
+      usuario: {
+        id: 2,
+        name: 'Ingrid Azevedo'
       },
-      action:'realizou uma nova compra'
+      action: 'realizou uma nova compra'
     }
 
     const notify3 = {
-      data:'17/10/2017',
-      usuario:{
-        id:3,
-        name:'Maique Rosa'
+      data: '17/10/2017',
+      usuario: {
+        id: 3,
+        name: 'Maique Rosa'
       },
-      action:'realizou uma nova compra'
+      action: 'realizou uma nova compra'
     }
 
-    this.notifications.push(notify,notify2,notify3)
+    this.notifications.push(notify, notify2, notify3)
 
   }
 }

@@ -22,7 +22,7 @@ export class CardDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private cardService: CardService, private registerService: RegisterService) { }
 
   ngOnInit() {
-    this.cardService.getCardBySlug(this.route.snapshot.params['slug']).subscribe(result => {
+    this.cardService.getCardById(this.route.snapshot.params['id']).subscribe(result => {
       this.card = result.data
     })
   }

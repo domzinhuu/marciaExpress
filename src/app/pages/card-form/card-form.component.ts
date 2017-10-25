@@ -3,7 +3,7 @@ import { Card } from './../../models/card.model';
 import { Result } from './../../models/result.model';
 import { fail } from 'assert';
 import { CardService } from './../../providers/card.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -51,7 +51,6 @@ export class CardFormComponent implements OnInit {
 
   private initCardForm() {
     this.cardForm = this.fb.group({
-      _id: this.fb.control(''),
       name: this.fb.control('', Validators.required),
       number: this.fb.control('', Validators.required),
       payday: this.fb.control('', Validators.required),
@@ -60,6 +59,7 @@ export class CardFormComponent implements OnInit {
     })
   }
   private fillCardForm() {
+    this.cardForm.addControl('_id',new FormControl())
     this.cardForm.setValue({
       _id: this.card._id,
       name: this.card.name,

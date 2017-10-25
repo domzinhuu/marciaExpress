@@ -56,12 +56,28 @@
         <h2 class="home-title">Principais Compradores</h2>
       </div>
       <div class="box-body">
-        <ul>
-          <li *ngFor="let user of bestUsers">
-            <div [class.impar]="user.id % 2 != 0" class="list">
+        <ul *ngIf="bestUsers.length">
+          <li>
+            <div class="list impar">
               <span>
-                <i class="fa fa-trophy {{user.position}}"></i> {{user.name}}</span>
-              <a href="{{user.id}}">Ver detalhes</a>
+                <i class="fa fa-trophy text-gold"></i> {{bestUsers[0]?.completeName}}</span>
+              <a [routerLink]="['/users/details/',bestUsers.length ? bestUsers[0]._id: 0]">Ver detalhes</a>
+            </div>
+          </li>
+
+          <li>
+            <div class="list">
+              <span>
+                <i class="fa fa-trophy text-silver"></i> {{bestUsers[1]?.completeName}}</span>
+              <a [routerLink]="['/users/details/',bestUsers.length ? bestUsers[1]._id: 0]">Ver detalhes</a>
+            </div>
+          </li>
+
+          <li>
+            <div class="list impar">
+              <span>
+                <i class="fa fa-trophy text-warning"></i> {{bestUsers[2]?.completeName}}</span>
+              <a [routerLink]="['/users/details/',bestUsers.length ? bestUsers[2]._id: 0]">Ver detalhes</a>
             </div>
           </li>
         </ul>
@@ -75,12 +91,28 @@
       </div>
 
       <div class="box-body">
-        <ul>
-          <li *ngFor="let card of bestCards">
-            <div [class.impar]="card.id % 2 != 0" class="list">
+        <ul *ngIf="bestCards.length">
+          <li>
+            <div class="list impar">
               <span>
-                <i class="fa fa-trophy {{card.position}}"></i> {{card.name}}</span>
-              <a href="{{card.id}}">Ver detalhes</a>
+                <i class="fa fa-trophy text-gold"></i> {{bestCards[0]?.name}}</span>
+              <a [routerLink]="['/cards/detail/',bestCards.length ? bestCards[0]._id: 0]">Ver detalhes</a>
+            </div>
+          </li>
+
+          <li>
+            <div class="list">
+              <span>
+                <i class="fa fa-trophy text-silver"></i> {{bestCards[1]?.name}}</span>
+              <a [routerLink]="['/cards/detail/',bestCards.length ? bestCards[1]._id: 0]">Ver detalhes</a>
+            </div>
+          </li>
+
+          <li>
+            <div class="list impar">
+              <span>
+                <i class="fa fa-trophy text-warning"></i> {{bestCards[2]?.name}}</span>
+              <a [routerLink]="['/cards/detail/',bestCards.length ? bestCards[0]._id: 0]">Ver detalhes</a>
             </div>
           </li>
         </ul>
@@ -103,6 +135,7 @@
           <span class="notify">{{notify.usuario.name}} {{notify.action}}</span>
           <a href="{{notify.usuario.id}}">Lançar</a>
         </div>
+        <p *ngIf="notifications.length == 0">Nenhuma notificação recebida.</p>
       </div>
     </div>
   </div>

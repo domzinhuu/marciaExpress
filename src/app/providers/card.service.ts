@@ -32,8 +32,8 @@ export class CardService {
         return this.http.get<Result>(END_POINT, { params })
     }
 
-    getCardBySlug(cardSlug: string): Observable<Result> {
-        return this.http.get<Result>(`${END_POINT}/${cardSlug}`)
+    getCardById(cardId: string): Observable<Result> {
+        return this.http.get<Result>(`${END_POINT}/${cardId}`)
     }
 
     changeStatus(cardId:string):Observable<Result>{

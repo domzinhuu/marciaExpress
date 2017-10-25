@@ -8,5 +8,6 @@ export class Card{
     limit:number
     active:boolean
     actualLimit:number
+    used:number
 
 }

@@ -1,5 +1,6 @@
 .content-principal{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     padding-top: 10px;
 }
@@ -36,12 +37,10 @@
 .estatisticas{
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
-    flex-basis: 50%;
 }
 
 .principais{
-    flex-basis: 98%;
+    width: 49%;
     border-radius: 3px;
     background-color: white;
     padding: 0 20px;
