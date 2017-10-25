@@ -1,0 +1,33 @@
+.card-detail-section{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.card-detail-panel{
+    flex-basis: 98%;
+    padding: 20px;
+}
+
+.details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-box{
+    flex-basis: 33%;
+}
+
+
+.info-box-number{
+    font-family: sans-serif !important;
+}
+.info-box-text{
+    font-family: sans-serif !important;
+}
+
+.box-header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

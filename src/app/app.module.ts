@@ -29,13 +29,29 @@ import { LoginComponent } from './security/login/login.component';
 import { MessageComponent } from './components/message/message.component';
 
 import { InputMaskModule } from 'ng2-inputmask';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config'
 import { ComboUsuarioComponent } from './components/combo-usuario/combo-usuario.component';
 import { ComboCartaoComponent } from './components/combo-cartao/combo-cartao.component';
 import { ComboMesComponent } from './components/combo-mes/combo-mes.component';
 import { RegisterSavedComponent } from './shared/register-saved/register-saved.component';
 import { RegisterTableComponent } from './components/register-table/register-table.component';
 import { RegisterResumeComponent } from './pages/register-resume/register-resume.component';
-import { UserDetailComponent } from './pages/user-detail/user-detail.component'
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { OnlyLastPipe } from './shared/pipes/only-last.pipe';
+import { CardDetailComponent } from './pages/card-detail/card-detail.component'
+
+
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: "right",
+  allowNegative: false,
+  allowZero: true,
+  decimal: ",",
+  precision: 2,
+  prefix: "R$ ",
+  suffix: "",
+  thousands: "."
+}
 
 @NgModule({
   declarations: [
@@ -59,7 +75,9 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component'
     RegisterSavedComponent,
     RegisterTableComponent,
     RegisterResumeComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    OnlyLastPipe,
+    CardDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +85,7 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component'
     FormsModule,
     ReactiveFormsModule,
     InputMaskModule,
+    CurrencyMaskModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
@@ -75,8 +94,10 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component'
     LoggedInGuard,
     CardService,
     RegisterService,
-    {provide: ErrorHandler, useClass: ApplicationErrorHandler},
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
+    { provide: ErrorHandler, useClass: ApplicationErrorHandler },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
   ],
   bootstrap: [AppComponent]
 })

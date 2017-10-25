@@ -28,7 +28,7 @@ export class UserDetailComponent implements OnInit {
     this.year = new Date().getFullYear()
 
     this.userService.getUsuario(this.route.snapshot.params['id']).subscribe(result => {
-      this.user = result.data
+      this.user = new Usuario(result.data)
     })
   }
 
@@ -52,8 +52,9 @@ export class UserDetailComponent implements OnInit {
     this.registerService.getRegisters(this.month, this.year, this.card, this.user._id)
       .subscribe(result => {
         this.registers = _.map(result, register => {
-          this.total += register.installments[0].value
-          return new RegisterView(register, this.month, this.year)
+          let registerView = new RegisterView(register, this.month, this.year)
+          this.total += registerView.value
+          return registerView
         })
       })
   }

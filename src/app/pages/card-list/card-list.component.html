@@ -24,18 +24,21 @@
           <tr *ngFor="let card of cards">
             <td class="text-center">{{cards.indexOf(card) + 1}}</td>
             <td>{{card.name}}</td>
-            <td class="text-center">{{card.number}}</td>
-            <td class="text-center">{{card.payday}}</td>
+            <td class="text-center text-normal">{{card.number | onlyLast}}</td>
+            <td class="text-center text-normal">{{card.payday}}</td>
             <td class="text-center">
-              <a [routerLink]="['/cards',card.slug]" class="btn btn-success btn-sm">
+              <a title="Editar Cartão" [routerLink]="['/cards',card.slug]" class="btn btn-success btn-sm">
                 <i class="fa fa-edit"></i>
               </a>
-              <a [routerLink]="['/cards',card.slug]" class="btn btn-warning btn-sm">
+              <a title="Ver Detalhes" [routerLink]="['/cards/detail/',card.slug]" class="btn btn-warning btn-sm">
                 <i class="fa fa-info-circle"></i>
               </a>
-              <a [routerLink]="['/cards',card.slug]" class="btn btn-danger btn-sm">
+              <button title="Desativar Cartão" *ngIf="card.active" (click)="deactivate(card._id)" class="btn btn-danger btn-sm">
                 <i class="fa fa-remove"></i>
-              </a>
+              </button>
+              <button title="Reativar Cartão" *ngIf="!card.active" (click)="activate(card._id)" class="btn btn-info btn-sm">
+                <i class="fa fa-eye"></i>
+                </button>
             </td>
           </tr>
 

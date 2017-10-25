@@ -15,6 +15,7 @@ export class RegisterService {
   constructor(private authService: AuthenticationService, private http: HttpClient) { }
 
   addRegister(register: Register): Observable<Result> {
+    register.value = register.value.toString()
     return this.http.post<Result>(end_point, register)
   }
 

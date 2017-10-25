@@ -6,6 +6,7 @@ export class Card{
     number:number
     payday:number
     limit:number
+    active:boolean
     actualLimit:number
 
 }

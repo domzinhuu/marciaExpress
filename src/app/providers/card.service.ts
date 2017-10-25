@@ -15,13 +15,28 @@ export class CardService {
 
     constructor(private http: HttpClient, private authService: AuthenticationService) { }
 
-    addCard(card: Card): Observable<Result> {
+    saveCard(card: Card): Observable<Result> {
+        if (card._id) {
+            return this.http.put<Result>(END_POINT, card)
+        }
+
         return this.http.post<Result>(END_POINT, card)
     }
 
-    getCards(query?: string): Observable<Result> {
-        const params = new HttpParams().set('query', query)
+    getCards(query: string = '',active?:boolean): Observable<Result> {
+        let params = new HttpParams().set('query', query)
+        if(active != undefined){
+            params = params.append('active',active ? 'true':'false')
+        }
 
-        return this.http.get<Result>(END_POINT, { params})
+        return this.http.get<Result>(END_POINT, { params })
+    }
+
+    getCardBySlug(cardSlug: string): Observable<Result> {
+        return this.http.get<Result>(`${END_POINT}/${cardSlug}`)
+    }
+
+    changeStatus(cardId:string):Observable<Result>{
+        return this.http.put<Result>(`${END_POINT}/${cardId}`,{})
     }
 }

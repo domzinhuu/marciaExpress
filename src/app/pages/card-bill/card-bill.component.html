@@ -18,12 +18,13 @@
     </div>
 
     <div class="box-footer">
-
-      <me-register-table [registers]="registersView" [classes]="'table table-responsive table-striped table-bordered'"></me-register-table>
+      <me-register-table [showUserColumn]="'true'" [registers]="registersView" [classes]="'table table-responsive table-striped table-bordered'"></me-register-table>
     </div>
+
     <div class="box-footer box-bottom">
       <span>Total: </span>
-      <span class="text-normal">{{total/100 | currency:'BRL':true}}</span>
+      <span class="text-normal">{{total | currency:'BRL':true}}</span>
     </div>
+    
   </div>
 </section>

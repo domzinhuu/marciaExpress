@@ -26,7 +26,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Total gasto até o momento</span>
-          <span class="info-box-number text-normal">{{(user?.spendTotal / 100) | currency:'BRL':true}}</span>
+          <span class="info-box-number text-normal">{{user?.spendTotal | currency:'BRL':true}}</span>
         </div>
       </div>
 
@@ -47,7 +47,7 @@
 
       <div class="box-footer box-bottom">
         <span>Total: </span>
-        <span class="text-normal">{{total/100 |currency:'BRL':true}}</span>
+        <span class="text-normal">{{total |currency:'BRL':true}}</span>
       </div>
 
 

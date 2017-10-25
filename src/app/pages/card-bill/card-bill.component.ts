@@ -48,9 +48,9 @@ export class CardBillComponent implements OnInit {
     this.registerService.getRegisters(this.month,this.year,this.cardId).subscribe(regs => {
       this.registers = regs
       this.registersView = _.map(regs,(item)=>{
-        
-        this.total += item.installments[0].value
-        return new RegisterView(item,this.month,this.year)
+        let register = new RegisterView(item,this.month,this.year)
+        this.total += register.value
+        return register
       })
     })
   }

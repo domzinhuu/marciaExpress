@@ -20,7 +20,7 @@ export class ComboCartaoComponent implements OnInit {
   constructor(private cardService:CardService) { }
 
   ngOnInit() {
-    this.cardService.getCards().subscribe(result =>{
+    this.cardService.getCards('',true).subscribe(result =>{
       this.cards = result.data
     })
   }

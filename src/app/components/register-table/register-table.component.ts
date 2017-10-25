@@ -10,7 +10,9 @@ export class RegisterTableComponent implements OnInit {
 
   @Input() classes:string
   @Input() registers:RegisterView[] = []
-
+  @Input() showCardColumn:boolean
+  @Input() showUserColumn:boolean
+  
   constructor() { }
 
   ngOnInit() {

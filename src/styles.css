@@ -5,6 +5,10 @@ body{
     font-family: 'Raleway',sans-serif;
 }
 
+input,select,option{
+    font-family: sans-serif;
+}
+
 h2.home-title{
     font-size: 22px;
 }

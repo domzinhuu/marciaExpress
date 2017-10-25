@@ -17,9 +17,27 @@ export class CardListComponent implements OnInit {
     this.searchCard()
   }
 
-  searchCard(query?: string) {
+  searchCard(query: string = '') {
     this.cardService.getCards(query).subscribe(result => {
       this.cards = result.data
     })
+  }
+
+  activate(cardId: string) {
+    const resp = confirm('Deseja reativar este cartão novamente? (você pode desativa-lo depois)')
+    this.changeStatus(cardId,resp)
+  }
+
+  deactivate(cardId: string) {
+    const resp = confirm('Deseja realmente desativar este cartão? (você poderá reativa-lo depois)')
+    this.changeStatus(cardId,resp)
+  }
+
+  changeStatus(cardId: string, change) {
+    if (change) {
+      this.cardService.changeStatus(cardId).subscribe(result=>{
+        this.searchCard()
+      })
+    }
   }
 }

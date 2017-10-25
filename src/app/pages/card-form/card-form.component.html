@@ -2,9 +2,12 @@
   <form class="card-form" [formGroup]="cardForm">
     <article>
       <div class="little-info">
-        <h3>Novo Cartão</h3>
-        <p>
+        <h3>{{card ? 'Editar Cartão' : 'Novo Cartão'}}</h3>
+        <p *ngIf="!card">
           Cadastre seus cartões para ter o controle de suas faturas, limites, frequencia de uso e muito mais.
+        </p>
+        <p *ngIf="card">
+          Ajuste os limites do seu cartão aqui caso esteja divergente do valor real.
         </p>
       </div>
     </article>
@@ -63,13 +66,13 @@
       <div class="col-sm-5">
         <div class="form-group">
           <label for="limite-total">Limite Total</label>
-          <input formControlName="limit" type="text" class="form-control" id="limite-total">
+          <input currencyMask formControlName="limit" type="tel" class="form-control" id="limite-total">
         </div>
       </div>
       <div class="col-sm-5">
         <div class="form-group">
           <label for="limite-atual">Limite Atual</label>
-          <input formControlName="actualLimit" type="text" class="form-control" id="limite-atual">
+          <input currencyMask formControlName="actualLimit" type="tel" class="form-control" id="limite-atual">
         </div>
       </div>
     </div>
