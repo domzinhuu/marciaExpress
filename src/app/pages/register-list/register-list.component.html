@@ -12,13 +12,15 @@
         <div class="form-group">
           <label for="paymentMonth">Periodo atual</label>
           <me-combo-mes [showYearBox]="true" [idElement]="'paymentMonth'" (setPeriod)="setPeriod($event)" [classes]="'form-control sizing'"></me-combo-mes>
-          <button (click)="updateRegisters()" class="btn btn-success btn-sm"><i class="fa fa-search"></i> buscar</button>
+          <button (click)="updateRegisters()" class="btn btn-success btn-sm">
+            <i class="fa fa-search"></i> buscar</button>
         </div>
       </div>
     </div>
 
     <div class="box-footer">
-      <me-register-table [showCardColumn]="'true'" [showUserColumn]="'true'" [classes]="'table table-responsive table-striped table-bordered'" [registers]="registersView"></me-register-table>
+      <me-register-table [showOptionsColumn]="'true'" [showCardColumn]="'true'" [showUserColumn]="'true'" [registers]="registersView"
+        (deleteRegister)="deleteRegister($event)" [classes]="'table table-responsive table-striped table-bordered'"></me-register-table>
     </div>
 
     <div class="box-footer box-bottom">

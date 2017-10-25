@@ -29,10 +29,14 @@ export class RegisterService {
       let params = this.buildHttpParams(month, year, card)
       this.http.get<Register[]>(end_point, { params }).subscribe(res => {
 
-        resolve(this.getResumeObject(_.orderBy(res,['user.completeName'],['asc']) ))
+        resolve(this.getResumeObject(_.orderBy(res, ['user.completeName'], ['asc'])))
       })
 
     })
+  }
+
+  deleteRegister(registerId: string): Observable<Result> {
+    return this.http.delete<Result>(`${end_point}/${registerId}`)
   }
 
 

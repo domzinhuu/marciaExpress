@@ -26,7 +26,6 @@ export class RegisterView {
     actual: string
 
     constructor(register: Register, month, year) {
-        console.log(register);
         let installment = register.installments.find(item => item.paymentMonth === month && item.paymentYear == year)
         this.id = register._id
         this.buyAt = register.buyAt

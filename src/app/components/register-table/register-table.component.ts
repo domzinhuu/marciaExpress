@@ -1,5 +1,5 @@
 import { RegisterView } from './../../models/register.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'me-register-table',
@@ -8,14 +8,21 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RegisterTableComponent implements OnInit {
 
-  @Input() classes:string
-  @Input() registers:RegisterView[] = []
-  @Input() showCardColumn:boolean
-  @Input() showUserColumn:boolean
-  
+  @Input() classes: string
+  @Input() registers: RegisterView[] = []
+  @Input() showCardColumn: boolean
+  @Input() showUserColumn: boolean
+  @Input() showOptionsColumn: boolean
+
+  @Output() deleteRegister = new EventEmitter()
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  deleteRegisterEmit(registerId:string){
+    this.deleteRegister.emit(registerId)
   }
 
 }

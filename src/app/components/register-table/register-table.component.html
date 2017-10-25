@@ -7,6 +7,7 @@
         <th *ngIf="showUserColumn">Usuario</th>
         <th *ngIf="showCardColumn">Cartão</th>
         <th>Valor</th>
+        <th class="text-center" *ngIf="showOptionsColumn">Opções</th>
       </tr>
     </thead>
 
@@ -19,9 +20,12 @@
         <td *ngIf="showUserColumn">{{register.username}}</td>
         <td *ngIf="showCardColumn">{{register.cardName}}</td>
         <td class="text-normal">{{register.value | currency:'BRL':true}}</td>
+        <td *ngIf="showOptionsColumn" class="text-center">
+          <button (click)="deleteRegisterEmit(register.id)" class="btn btn-danger btn-xs" title="Deletar Lançamento"><i class="fa fa-remove"></i></button>
+        </td>
       </tr>
       <tr *ngIf="registers?.length == 0">
-          <td colspan="6" class="text-center">Nenhum registro foi feito para este periodo.</td>
+          <td colspan="7" class="text-center">Nenhum registro foi feito para este periodo.</td>
       </tr>
     </tbody>
   </table>

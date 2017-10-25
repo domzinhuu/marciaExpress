@@ -44,4 +44,16 @@ export class RegisterListComponent implements OnInit {
 
     })
   }
+
+  deleteRegister(registerId: string) {
+    const resp = confirm("Se deletar está compra todas as parcelas referentes a ela tambem serão deletadas.\n\nDeseja realmente fazer isto?")
+
+    if (resp) {
+      this.registerService.deleteRegister(registerId).subscribe(result => {
+        this.updateRegisters()
+        alert(result.messages)
+      })
+    }
+
+  }
 }
