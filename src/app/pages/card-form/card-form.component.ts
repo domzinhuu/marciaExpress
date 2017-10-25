@@ -23,10 +23,10 @@ export class CardFormComponent implements OnInit {
 
   ngOnInit() {
     this.initCardForm()
-    const cardSlug = this.router.snapshot.params['slug']
+    const cardId = this.router.snapshot.params['id']
 
-    if (cardSlug) {
-      this.cardService.getCardBySlug(cardSlug).subscribe(result => {
+    if (cardId) {
+      this.cardService.getCardById(cardId).subscribe(result => {
         this.card = result.data
         this.fillCardForm()
       })
