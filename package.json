@@ -5,12 +5,13 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
-    "start": "node server.js",
+    "start": "pm2 start server.js",
+    "stop": "pm2 stop server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng b --aot -prod"
+    "prestart": "ng b --aot -prod"
   },
   "private": true,
   "dependencies": {
