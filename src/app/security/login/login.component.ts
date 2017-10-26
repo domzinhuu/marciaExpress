@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/loading/loading.service';
 import { fail } from 'assert';
 import { AuthenticationService } from './../../providers/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   navigateTo: string
 
   constructor(private authService: AuthenticationService, private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute, private router: Router) { }
+    private activatedRoute: ActivatedRoute, private router: Router,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
     this.navigateTo = this.activatedRoute.snapshot.params['to'] || '/home'
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit {
     this.authenticationErrors = []
     this.submited = true
     if (this.loginForm.invalid) return;
-
+  
+    this.loadCtrl.show()
     this.authService.login(this.loginForm.value).subscribe(result => result,
       fail => {
         try {

@@ -1,3 +1,4 @@
+import { LoadingService } from '../../shared/loading/loading.service';
 import { MONTHS } from '../../utils/variables.utils';
 import { Router } from '@angular/router';
 import { Result } from './../../models/result.model';
@@ -18,7 +19,7 @@ export class RegisterFormComponent implements OnInit {
   messages: string[]
   hasSucess: boolean
 
-  constructor(private fb: FormBuilder, private registerService: RegisterService,private router:Router) { }
+  constructor(private fb: FormBuilder, private registerService: RegisterService,private router:Router,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -34,6 +35,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   addRegister() {
+    this.loadCtrl.show()
     this.submited = true
     if (this.registerForm.invalid) return;
 
@@ -43,6 +45,8 @@ export class RegisterFormComponent implements OnInit {
     }, (fail: Result) => {
       this.messages = fail.messages
       this.hasSucess = false
+    },()=>{
+      this.loadCtrl.hide()
     })
   }
 

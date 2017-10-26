@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/loading/loading.service';
 import _ from 'lodash'
 import { RegisterService } from './../../providers/register.service';
 import { MONTHS } from '../../utils/variables.utils';
@@ -21,14 +22,16 @@ export class UserDetailComponent implements OnInit {
   total: number = 0
   registers: RegisterView[] = []
 
-  constructor(private route: ActivatedRoute, private userService: UsuarioService, private registerService: RegisterService) { }
+  constructor(private route: ActivatedRoute, private userService: UsuarioService, private registerService: RegisterService,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
+    this.loadCtrl.show()
     this.month = MONTHS[new Date().getMonth()]
     this.year = new Date().getFullYear()
-
+    
     this.userService.getUsuario(this.route.snapshot.params['id']).subscribe(result => {
       this.user = new Usuario(result.data)
+      this.loadCtrl.hide()
     })
   }
 
@@ -43,6 +46,8 @@ export class UserDetailComponent implements OnInit {
 
 
   updateRegister() {
+    this.loadCtrl.show()
+
     if (!this.card) {
       alert('É preciso informar um cartão para fazer a busca.')
       return;
@@ -56,6 +61,7 @@ export class UserDetailComponent implements OnInit {
           this.total += registerView.value
           return registerView
         })
+        this.loadCtrl.hide()
       })
   }
 

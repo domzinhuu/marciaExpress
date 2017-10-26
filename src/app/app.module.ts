@@ -1,3 +1,5 @@
+import { LoadingService } from './shared/loading/loading.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeService } from './providers/home.service';
 import { ApplicationErrorHandler } from './app.error-handler';
 import { AuthInterceptor } from './security/interceptors/auth.interceptor';
@@ -13,7 +15,7 @@ import { ROUTES } from './app.routes';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -40,7 +42,8 @@ import { RegisterTableComponent } from './components/register-table/register-tab
 import { RegisterResumeComponent } from './pages/register-resume/register-resume.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { OnlyLastPipe } from './shared/pipes/only-last.pipe';
-import { CardDetailComponent } from './pages/card-detail/card-detail.component'
+import { CardDetailComponent } from './pages/card-detail/card-detail.component';
+import { LoadingComponent } from './shared/loading/loading.component'
 
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
@@ -78,7 +81,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     RegisterResumeComponent,
     UserDetailComponent,
     OnlyLastPipe,
-    CardDetailComponent
+    CardDetailComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +91,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     ReactiveFormsModule,
     InputMaskModule,
     CurrencyMaskModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
@@ -96,6 +101,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     CardService,
     RegisterService,
     HomeService,
+    LoadingService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
     { provide: ErrorHandler, useClass: ApplicationErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

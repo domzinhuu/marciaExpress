@@ -1,3 +1,4 @@
+import { LoadingService } from '../../shared/loading/loading.service';
 import _ from 'lodash'
 import { MONTHS } from './../../utils/variables.utils';
 import { RegisterView } from './../../models/register.model';
@@ -19,7 +20,7 @@ export class CardBillComponent implements OnInit {
   cardId:string
   total:number = 0
 
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
     this.month = MONTHS[new Date().getMonth()]
@@ -44,6 +45,7 @@ export class CardBillComponent implements OnInit {
   }
 
   updateRegister() {
+    this.loadCtrl.show()
     this.total = 0
     this.registerService.getRegisters(this.month,this.year,this.cardId).subscribe(regs => {
       this.registers = regs
@@ -52,6 +54,7 @@ export class CardBillComponent implements OnInit {
         this.total += register.value
         return register
       })
+      this.loadCtrl.hide()
     })
   }
 

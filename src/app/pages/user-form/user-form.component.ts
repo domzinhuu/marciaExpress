@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/loading/loading.service';
 import { fail } from 'assert';
 import { Usuario } from '../../models/usuario.model';
 import { ActivatedRoute } from '@angular/router';
@@ -21,10 +22,11 @@ export class UserFormComponent implements OnInit {
   messages: string[]
   error: any
 
-  constructor(private userService: UsuarioService, private fb: FormBuilder, private route: ActivatedRoute) { }
+  constructor(private userService: UsuarioService, private fb: FormBuilder, private route: ActivatedRoute,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
     if (this.route.snapshot.params['id']) {
+      this.loadCtrl.show()
       this.prepareToEdit(this.route.snapshot.params['id'])
       this.userForm = this.fb.group({
         _id: this.fb.control('', Validators.required),
@@ -47,6 +49,7 @@ export class UserFormComponent implements OnInit {
   }
 
   save() {
+    this.loadCtrl.show()
     this.submited = true
     if (this.userForm.invalid) return;
 
@@ -61,6 +64,8 @@ export class UserFormComponent implements OnInit {
         const err = JSON.parse(fail.error)
         this.hasSuccess = false
         this.messages = err.messages
+      },()=>{
+        this.loadCtrl.hide()
       })
   }
 
@@ -74,6 +79,7 @@ export class UserFormComponent implements OnInit {
         cellphone: this.editUser.cellphone,
         username: this.editUser.username
       })
+      this.loadCtrl.hide();
     })
   }
 }

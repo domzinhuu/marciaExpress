@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/loading/loading.service';
 import { MONTHS } from './../../utils/variables.utils';
 import _ from 'lodash'
 import { Register, RegisterView } from './../../models/register.model';
@@ -17,7 +18,7 @@ export class RegisterListComponent implements OnInit {
   actualYear = new Date().getUTCFullYear()
   actualMonth: string
 
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService, private loadCtrl: LoadingService) { }
 
   ngOnInit() {
     this.actualMonth = MONTHS[new Date().getMonth()]
@@ -32,6 +33,7 @@ export class RegisterListComponent implements OnInit {
   }
 
   updateRegisters() {
+    this.loadCtrl.show()
     this.registerService.getRegisters(this.actualMonth, this.actualYear).subscribe(regs => {
 
       this.total = 0
@@ -41,7 +43,7 @@ export class RegisterListComponent implements OnInit {
         this.total += register.value
         return register
       })
-
+      this.loadCtrl.hide()
     })
   }
 
@@ -49,9 +51,9 @@ export class RegisterListComponent implements OnInit {
     const resp = confirm("Se deletar está compra todas as parcelas referentes a ela tambem serão deletadas.\n\nDeseja realmente fazer isto?")
 
     if (resp) {
+      this.loadCtrl.show()
       this.registerService.deleteRegister(registerId).subscribe(result => {
         this.updateRegisters()
-        alert(result.messages)
       })
     }
 

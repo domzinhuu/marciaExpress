@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/loading/loading.service';
 import { CardService } from './../../providers/card.service';
 import { Card } from './../../models/card.model';
 import { Component, OnInit } from '@angular/core';
@@ -11,15 +12,17 @@ export class CardListComponent implements OnInit {
 
   cards: Card[]
 
-  constructor(private cardService: CardService) { }
+  constructor(private cardService: CardService,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
     this.searchCard()
   }
 
   searchCard(query: string = '') {
+    this.loadCtrl.show()
     this.cardService.getCards(query).subscribe(result => {
       this.cards = result.data
+      this.loadCtrl.hide()
     })
   }
 
@@ -35,6 +38,7 @@ export class CardListComponent implements OnInit {
 
   changeStatus(cardId: string, change) {
     if (change) {
+      this.loadCtrl.show()
       this.cardService.changeStatus(cardId).subscribe(result=>{
         this.searchCard()
       })

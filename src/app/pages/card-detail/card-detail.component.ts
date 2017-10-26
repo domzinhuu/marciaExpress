@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/loading/loading.service';
 import _ from 'lodash'
 import { RegisterService } from './../../providers/register.service';
 import { RegisterView } from './../../models/register.model';
@@ -19,11 +20,13 @@ export class CardDetailComponent implements OnInit {
   registers: RegisterView[] = []
   total: number = 0
 
-  constructor(private route: ActivatedRoute, private cardService: CardService, private registerService: RegisterService) { }
+  constructor(private route: ActivatedRoute, private cardService: CardService, private registerService: RegisterService,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
+    this.loadCtrl.show()
     this.cardService.getCardById(this.route.snapshot.params['id']).subscribe(result => {
       this.card = result.data
+      this.loadCtrl.hide()
     })
   }
 
@@ -33,14 +36,16 @@ export class CardDetailComponent implements OnInit {
   }
 
   updateRegisters() {
+    this.loadCtrl.show()
     this.total = 0
     this.registerService.getRegisters(this.month, this.year, this.card._id).subscribe(result => {
-      this.registers = _.map(result,(item)=>{
-        const register = new RegisterView(item,this.month,this.year)
-        
+      this.registers = _.map(result, (item) => {
+        const register = new RegisterView(item, this.month, this.year)
+
         this.total += register.value
         return register
       })
+      this.loadCtrl.hide()
     })
   }
 }

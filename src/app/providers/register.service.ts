@@ -1,3 +1,4 @@
+import { LoadingService } from '../shared/loading/loading.service';
 import _ from 'lodash'
 import { ME_API } from '../utils/variables.utils';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -12,7 +13,7 @@ const end_point = `${ME_API}/registers`
 @Injectable()
 export class RegisterService {
 
-  constructor(private authService: AuthenticationService, private http: HttpClient) { }
+  constructor(private authService: AuthenticationService, private http: HttpClient,private loadCtrl:LoadingService) { }
 
   addRegister(register: Register): Observable<Result> {
     register.value = register.value.toString()

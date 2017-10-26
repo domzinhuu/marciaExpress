@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/loading/loading.service';
 import { ActivatedRoute } from '@angular/router';
 import { Card } from './../../models/card.model';
 import { Result } from './../../models/result.model';
@@ -19,21 +20,24 @@ export class CardFormComponent implements OnInit {
   messages: string[]
   hasSuccess: boolean
 
-  constructor(private cardService: CardService, private fb: FormBuilder, private router: ActivatedRoute) { }
+  constructor(private cardService: CardService, private fb: FormBuilder, private router: ActivatedRoute,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
     this.initCardForm()
     const cardId = this.router.snapshot.params['id']
 
     if (cardId) {
+      this.loadCtrl.show()
       this.cardService.getCardById(cardId).subscribe(result => {
         this.card = result.data
+        this.loadCtrl.hide()
         this.fillCardForm()
       })
     }
   }
 
   addCard() {
+    this.loadCtrl.show()
     this.submited = true;
     if (this.cardForm.invalid) return;
 
@@ -46,6 +50,8 @@ export class CardFormComponent implements OnInit {
     }, (fail: Result) => {
       this.hasSuccess = false
       this.messages = fail.messages
+    },()=>{
+      this.loadCtrl.hide()
     })
   }
 
