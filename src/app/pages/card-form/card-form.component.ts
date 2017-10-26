@@ -52,7 +52,7 @@ export class CardFormComponent implements OnInit {
   private initCardForm() {
     this.cardForm = this.fb.group({
       name: this.fb.control('', Validators.required),
-      number: this.fb.control('', Validators.required),
+      number: this.fb.control('', Validators.compose([Validators.required,Validators.minLength(19)])),
       payday: this.fb.control('', Validators.required),
       limit: this.fb.control(''),
       actualLimit: this.fb.control('')

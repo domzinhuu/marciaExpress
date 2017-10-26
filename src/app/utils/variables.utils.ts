@@ -1,15 +1,16 @@
-export const ME_API = 'https://marciaexpress.tk/api' //'http://localhost:3005/api'
+import { environment } from './../../environments/environment';
+export const ME_API = environment.end_point_me
 export const MONTHS = [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro'
-  ]
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro'
+]

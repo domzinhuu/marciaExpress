@@ -1,3 +1,4 @@
+import { fail } from 'assert';
 import { Usuario } from '../../models/usuario.model';
 import { ActivatedRoute } from '@angular/router';
 import { Result } from '../../models/result.model';
@@ -57,8 +58,9 @@ export class UserFormComponent implements OnInit {
         this.messages = result.messages
 
       }, (fail: Result) => {
+        const err = JSON.parse(fail.error)
         this.hasSuccess = false
-        this.messages = fail.messages
+        this.messages = err.messages
       })
   }
 

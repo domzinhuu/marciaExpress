@@ -18,7 +18,8 @@
       <input formControlName="name" type="text" class="form-control" placeholder="Ex: Credicard Gold - dia 23" id="description">
     </div>
 
-    <div [class.has-error]="cardForm.get('number').hasError('required') && submited" class="form-group">
+    <div [class.has-error]="(cardForm.get('number').hasError('required') || cardForm.get('number').hasError('minlength')) && submited"
+      class="form-group">
       <label for="numero">Numero</label>
       <input formControlName="number" mask="0000 0000 0000 0000" type="text" class="form-control" id="numero">
     </div>

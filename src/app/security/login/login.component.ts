@@ -1,3 +1,4 @@
+import { fail } from 'assert';
 import { AuthenticationService } from './../../providers/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../providers/usuario.service';
@@ -12,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  authenticationErrors: string[] = []
   submited: boolean
   loginForm: FormGroup
   navigateTo: string
@@ -28,11 +30,31 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.authenticationErrors = []
     this.submited = true
     if (this.loginForm.invalid) return;
 
     this.authService.login(this.loginForm.value).subscribe(result => result,
-      fail => console.log(fail),
+      fail => {
+        try {
+          const err = JSON.parse(fail.error)
+          
+          if (err.error == 'UserNotExists') {
+            this.authenticationErrors.push('Credenciais Invalidas')
+          }
+          if (err.error === 'UserNotAdmin') {
+            this.authenticationErrors = err.messages
+          }
+
+        } catch (error) {
+          console.log(error,fail);
+          if (fail.statusText === 'Unauthorized') {
+            this.authenticationErrors.push('Credenciais Invalidas')
+          }
+
+        }
+
+      },
       () => {
         this.router.navigate([this.navigateTo])
       })

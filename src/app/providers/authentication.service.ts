@@ -10,8 +10,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthenticationService{
 
-    loggedUser:LoggedUser
-
     constructor(private http:HttpClient,private router:Router){}
 
 
@@ -27,7 +25,6 @@ export class AuthenticationService{
         return this.http.post<Result>(`${ME_API}/users/login`,credentials)
         .do(data =>{
             this.setLoggedUser(data.data)
-            this.loggedUser = data.data
         })
         
     }

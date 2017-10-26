@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  end_point_me: 'https://marciaexpress.tk/api'
 };
