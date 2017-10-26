@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  bestUsers:any[] = []
-  bestCards:any[] = []
-  notifications:any[] = []
+  bestUsers: any[] = []
+  bestCards: any[] = []
+  notifications: any[] = []
 
   constructor(private homeService: HomeService) { }
 
@@ -23,13 +23,15 @@ export class HomeComponent implements OnInit {
 
   private getBestUsers() {
     this.homeService.getBestUsers().subscribe(users => {
-       this.bestUsers = users
+      if (users.length == 3)
+        this.bestUsers = users
     })
   }
 
-  private getBestCards(){
-    this.homeService.getBestCards().subscribe(cards=>{
-      this.bestCards = cards
+  private getBestCards() {
+    this.homeService.getBestCards().subscribe(cards => {
+      if (cards.length == 3)
+        this.bestCards = cards
     })
   }
 

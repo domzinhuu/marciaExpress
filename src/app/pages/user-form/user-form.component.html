@@ -30,7 +30,7 @@
 
     <div [class.has-error]="userForm.get('cellphone').hasError('required') && submited" class="form-group">
       <label for="cel">Celular</label>
-      <input formControlName="cellphone" type="text" class="form-control" id="cel">
+      <input mask="(00) 00000-0000" formControlName="cellphone" type="text" class="form-control" id="cel">
     </div>
 
     <div [class.has-error]="userForm.get('username').hasError('required') && submited" class="form-group">

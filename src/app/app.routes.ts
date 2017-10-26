@@ -31,7 +31,7 @@ export const ROUTES: Routes = [
             { path: 'users', component: UserListComponent },
             { path: 'cards/add', component: CardFormComponent },
             { path: 'cards/bills', component: CardBillComponent },
-            { path: 'cards/:slug', component: CardFormComponent },
+            { path: 'cards/:id', component: CardFormComponent },
             { path: 'cards/detail/:id', component: CardDetailComponent },
             { path: 'cards', component: CardListComponent },
             { path: 'registers/add', component: RegisterFormComponent },

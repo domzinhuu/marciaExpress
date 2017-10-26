@@ -27,7 +27,7 @@
             <td class="text-center text-normal">{{card.number | onlyLast}}</td>
             <td class="text-center text-normal">{{card.payday}}</td>
             <td class="text-center">
-              <a title="Editar Cartão" [routerLink]="['/cards',card.slug]" class="btn btn-success btn-sm">
+              <a title="Editar Cartão" [routerLink]="['/cards',card._id]" class="btn btn-success btn-sm">
                 <i class="fa fa-edit"></i>
               </a>
               <a title="Ver Detalhes" [routerLink]="['/cards/detail/',card._id]" class="btn btn-warning btn-sm">
