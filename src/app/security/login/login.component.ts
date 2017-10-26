@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       fail => {
         try {
           const err = JSON.parse(fail.error)
-          
+          this.loadCtrl.hide()
           if (err.error == 'UserNotExists') {
             this.authenticationErrors.push('Credenciais Invalidas')
           }
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           }
 
         } catch (error) {
-          console.log(error,fail);
+          this.loadCtrl.hide()
           if (fail.statusText === 'Unauthorized') {
             this.authenticationErrors.push('Credenciais Invalidas')
           }
