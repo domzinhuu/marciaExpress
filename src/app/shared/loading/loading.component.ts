@@ -27,7 +27,6 @@ export class LoadingComponent implements OnInit {
     if (!this.message) this.message = 'Aguarde...'
 
     this.loadCtrl.present.subscribe(status => {
-      console.log("cheogu no subscribe",status);
       this.present = status;
     })
   }

@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardListComponent implements OnInit {
 
-  cards: Card[]
+  cards: Card[] = []
 
   constructor(private cardService: CardService,private loadCtrl:LoadingService) { }
 
