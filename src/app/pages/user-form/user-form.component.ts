@@ -49,10 +49,10 @@ export class UserFormComponent implements OnInit {
   }
 
   save() {
-    this.loadCtrl.show()
     this.submited = true
     if (this.userForm.invalid) return;
 
+    this.loadCtrl.show()
     this.userService.save(this.userForm.value)
       .subscribe((result: Result) => {
         this.submited = false

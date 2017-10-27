@@ -37,10 +37,10 @@ export class CardFormComponent implements OnInit {
   }
 
   addCard() {
-    this.loadCtrl.show()
     this.submited = true;
     if (this.cardForm.invalid) return;
 
+    this.loadCtrl.show()
     this.cardService.saveCard(this.cardForm.value).subscribe(result => {
       this.cardForm.reset()
       this.submited = false
