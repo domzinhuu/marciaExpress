@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/loading/loading.service';
 import { NotifyContainer } from './../../models/notify.model';
 import { NotifyService } from './../../providers/notify.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,13 @@ export class NotifyComponent implements OnInit {
 
   notifyContainer: NotifyContainer
 
-  constructor(private notifyService: NotifyService) { }
+  constructor(private notifyService: NotifyService,private loadingService:LoadingService) { }
 
   ngOnInit() {
+    this.loadingService.show()
     this.notifyService.getNotifies(20).subscribe(notifies => {
       this.notifyContainer = notifies
+      this.loadingService.hide()
     })
   }
 

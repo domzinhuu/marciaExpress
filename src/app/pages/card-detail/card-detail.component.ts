@@ -1,3 +1,4 @@
+import { MONTHS } from '../../utils/variables.utils';
 import { LoadingService } from './../../shared/loading/loading.service';
 import _ from 'lodash'
 import { RegisterService } from './../../providers/register.service';
@@ -23,6 +24,8 @@ export class CardDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private cardService: CardService, private registerService: RegisterService,private loadCtrl:LoadingService) { }
 
   ngOnInit() {
+    this.month = MONTHS[new Date().getMonth()]
+    this.year = new Date().getFullYear()
     this.loadCtrl.show()
     this.cardService.getCardById(this.route.snapshot.params['id']).subscribe(result => {
       this.card = result.data

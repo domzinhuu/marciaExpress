@@ -1,3 +1,4 @@
+import { AuthenticationService } from './providers/authentication.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
+  constructor(public autheService:AuthenticationService){}
 }

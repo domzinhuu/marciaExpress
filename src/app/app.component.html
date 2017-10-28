@@ -5,7 +5,7 @@
   <me-header></me-header>
 
   <!-- Componente da Sidebar.. -->
-  <me-sidebar></me-sidebar>
+  <me-sidebar *ngIf="autheService.isLogged"></me-sidebar>
 
 
   <!-- Parte do conteudo da aplicação -->

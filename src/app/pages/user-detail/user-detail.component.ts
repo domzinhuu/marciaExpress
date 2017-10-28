@@ -46,13 +46,12 @@ export class UserDetailComponent implements OnInit {
 
 
   updateRegister() {
-    this.loadCtrl.show()
-
     if (!this.card) {
       alert('É preciso informar um cartão para fazer a busca.')
       return;
     }
     
+    this.loadCtrl.show()
     this.total = 0
     this.registerService.getRegisters(this.month, this.year, this.card, this.user._id)
       .subscribe(result => {

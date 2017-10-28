@@ -28,7 +28,6 @@ export class AuthenticationService {
         let result = this.getUserLogged() != undefined
         if(this.isLogged != result){
             this.isLogged = result;
-            this.isLoggedObserver.next(this.isLogged)
         }
         return result
 
@@ -49,7 +48,6 @@ export class AuthenticationService {
     logout(): void {
         sessionStorage.clear()
         this.isLogged = false
-        this.isLoggedObserver.next(this.isLogged);
         this.redirectToLogin()
     }
 

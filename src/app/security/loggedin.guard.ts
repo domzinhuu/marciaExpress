@@ -14,11 +14,11 @@ export class LoggedInGuard implements CanActivate {
 
         if (!isLogged) {
             this.authService.redirectToLogin(state.url);
-
+            this.authService.isLogged = false
         }
-        this.notifyService.getNotifies(60,false).subscribe(result=>{
-            this.notifyService.notifies = result
-        })
+
+        this.authService.isLogged = true
+        this.notifyService.notifiesObserver.next(true)
         return isLogged
     }
 }
