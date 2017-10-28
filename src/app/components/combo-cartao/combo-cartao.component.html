@@ -1,3 +1,3 @@
 <select id="creditcard" [(ngModel)]="cardId" (change)="changeCardEmit()" [class]="classes">
-  <option *ngFor="let card of cards" [value]="card._id">{{card.name}}</option>
+  <option class="capitalize" *ngFor="let card of cards" [value]="card._id">{{card.name}}</option>
 </select>

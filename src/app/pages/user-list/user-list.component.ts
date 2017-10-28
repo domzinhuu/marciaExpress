@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  message:string
+  message: string
   usuarios: Usuario[]
 
   constructor(private usuarioService: UsuarioService, private loadCtrl: LoadingService,

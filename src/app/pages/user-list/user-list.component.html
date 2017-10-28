@@ -22,7 +22,7 @@
         <tbody>
           <tr *ngFor="let user of usuarios">
             <td class="text-center">{{usuarios.indexOf(user) + 1}}</td>
-            <td>{{user?.completeName}}</td>
+            <td class="capitalize">{{user?.completeName}}</td>
             <td>{{user?.cellphone}}</td>
             <td>{{user?.username}}</td>
             <td class="text-center">

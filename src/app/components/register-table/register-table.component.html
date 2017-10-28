@@ -15,8 +15,8 @@
       <tr *ngFor="let register of registers">
         <td>{{register.buyAt | date:'dd/MM/yyyy'}}</td>
         <td>
-          <span class="text-muted">{{register.actual}}</span> {{register.productName}}</td>
-        <td>{{register.local}}</td>
+          <span class="text-muted capitalize">{{register.actual}}</span> {{register.productName}}</td>
+        <td class="capitalize">{{register.local}}</td>
         <td *ngIf="showUserColumn">{{register.username}}</td>
         <td *ngIf="showCardColumn">{{register.cardName}}</td>
         <td class="text-normal">{{register.value | currency:'BRL':true}}</td>

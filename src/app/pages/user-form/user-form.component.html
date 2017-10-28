@@ -35,7 +35,7 @@
 
     <div [class.has-error]="userForm.get('username').hasError('required') && submited" class="form-group">
       <label for="usuario">Usuario</label>
-      <input formControlName="username" type="text" class="form-control" id="usuario">
+      <input formControlName="username" type="text" class="no-capitalize form-control" id="usuario">
     </div>
 
     <div class="row" *ngIf="editUser">

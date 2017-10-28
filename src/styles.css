@@ -4,6 +4,9 @@
 body{
     font-family: 'Raleway',sans-serif;
 }
+input[type='text']{
+    text-transform: capitalize;
+}
 
 input,select,option{
     font-family: sans-serif;
@@ -78,4 +81,12 @@ nav,ul{
     text-align: right;
     font-size: 22px;
     
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.no-capitalize{
+    text-transform: none !important;
 }
