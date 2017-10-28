@@ -1,0 +1,36 @@
+<section class="notify-section">
+  <div class="box box-success notify-panel">
+    <div class="box-header with-border">
+      <h2>Notificações</h2>
+    </div>
+
+    <div class="box-body">
+      <table class="table table-resposive">
+        <thead>
+          <tr>
+            <th>Data de envio</th>
+            <th>Mensagem</th>
+            <th class="text-center" style="width:150px">
+              <p>Marcar como lida</p> 
+              <input [checked]="notifyContainer?.news == 0" [disabled]="notifyContainer?.news == 0" class="check-all" type="checkbox" (click)="changeAllToRead()">
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let notify of notifyContainer?.notifies">
+            <td>{{notify.registeredAt | date:'dd/MM/yyyy'}}</td>
+            <td [class]="!notify.read? notify.user? 'text-green':'text-yellow' :''">
+              <i [class]="notify.user ? 'fa fa-shopping-cart fa-lg' : 'fa fa-user-circle fa-lg' " style="margin-right: 10px"></i>
+              <span [class]="!notify.read? 'text-bold':''">{{notify.message}}</span>
+              <br>
+              <span>{{notify.description}}</span>
+            </td>
+            <td (click)="changeNotifyStatus(notify._id)" class="text-center">
+                <input [checked]="notify.read" type="checkbox">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

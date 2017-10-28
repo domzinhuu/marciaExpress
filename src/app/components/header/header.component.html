@@ -26,24 +26,27 @@
           <!-- Menu toggle button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">5</span>
+            <span *ngIf="notfiyService.notifies?.news > 0" class="label label-warning">{{notfiyService.notifies?.news}}</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="header">Você tem 5 novas notificações</li>
-            <li>
+            <li *ngIf="notfiyService.notifies?.news > 0" class="header">Você tem {{notifyContainer?.news}} {{notifyContainer?.news > 1 ? 'novas notificações': 'nova notificação'}}</li>
+            <li *ngIf="notfiyService.notifies?.news == 0" class="header">Nenhuma nova notificação</li>
+            <li *ngIf="notfiyService.notifies?.news > 0">
               <!-- Inner Menu: contains the notifications -->
               <ul class="menu">
 
-                <li>
-                  <a href="#">
-                    <i class="fa fa-users text-aqua"></i> Ok, ainda esta em teste :P
+                <li *ngFor="let notify of notfiyService.notifies?.notifies">
+                  <a [routerLink]="['notify']" class="click-cursor" [title]="notify.message">
+                    <i *ngIf="!notify.user" class="fa fa-user text-yellow"></i>
+                    <i *ngIf="notify.user" class="fa fa-shopping-cart text-green"></i>
+                    <b>{{notify.message}}</b>
                   </a>
                 </li>
 
               </ul>
             </li>
             <li class="footer">
-              <a href="#">Ver todas</a>
+              <a class="click-cursor" [routerLink]="['notify']">Ver todas</a>
             </li>
           </ul>
         </li>

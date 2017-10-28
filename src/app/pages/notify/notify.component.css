@@ -1,0 +1,15 @@
+.notify-section{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.notify-panel{
+    flex-basis: 98%;
+    padding: 20px; 
+}
+
+.check-all{
+    width: 16px;
+    height: 16px;
+}

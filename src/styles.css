@@ -90,3 +90,11 @@ nav,ul{
 .no-capitalize{
     text-transform: none !important;
 }
+
+.click-cursor{
+    cursor: pointer;
+}
+
+.text-bold{
+    font-weight:bold !important;
+}

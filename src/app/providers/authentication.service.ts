@@ -1,3 +1,4 @@
+import { NotifyService } from './notify.service';
 import { LoggedUser } from './../models/logged-user.model';
 import { Router } from '@angular/router';
 import { Result } from '../models/result.model';
@@ -12,7 +13,7 @@ export class AuthenticationService {
     isLogged:any
     isLoggedObserver:any
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient, private router: Router,private notifyService:NotifyService) {
         this.isLogged = Observable.create(observer =>{
             this.isLoggedObserver = observer
         })

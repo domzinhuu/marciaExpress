@@ -1,3 +1,4 @@
+import { NotifyService } from './../../providers/notify.service';
 import { AuthenticationService } from './../../providers/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private authService:AuthenticationService) { }
+  constructor(private authService:AuthenticationService,public notifyService:NotifyService) { }
 
   ngOnInit() {
   }

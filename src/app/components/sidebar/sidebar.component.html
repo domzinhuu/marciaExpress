@@ -76,6 +76,15 @@
           </li>
         </ul>
       </li>
+
+      <li><a [routerLink]="['notify']" class="click-cursor">
+        <i class="fa fa-bell"></i>  
+        <span>Notificações</span>
+
+        <span class="pull-right-container" *ngIf="notifyService.notifies?.news > 0">
+            <span class="label pull-right bg-yellow">Nova</span>
+          </span>
+      </a></li>
     </ul>
   </section>
 </aside>

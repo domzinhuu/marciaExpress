@@ -1,3 +1,6 @@
+import { NotifyContainer } from './../../models/notify.model';
+import { NotifyService } from './../../providers/notify.service';
+import { RegisterService } from './../../providers/register.service';
 import { AuthenticationService } from './../../providers/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,18 +10,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  islogged:boolean
-  constructor(private authService:AuthenticationService) {
-  
+  islogged: boolean
+  notifyContainer: NotifyContainer
+
+  constructor(private authService: AuthenticationService, public notfiyService: NotifyService) {
+
   }
 
   ngOnInit() {
-   this.authService.checkStatus().subscribe(data =>{
-     this.islogged = data
-   })
+    this.authService.checkStatus().subscribe(data => {
+      this.islogged = data
+    })
+
+    /* this.notfiyService.checkNotifyUpdate().subscribe(notifies => {
+
+      this.notfiyService.getNotifies(15, false).subscribe(notifies => {
+        this.notifyContainer = notifies
+      })
+    }) */
   }
 
-  logout(){
+  logout() {
     this.authService.logout()
   }
+
 }

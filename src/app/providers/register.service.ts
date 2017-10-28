@@ -40,7 +40,6 @@ export class RegisterService {
     return this.http.delete<Result>(`${end_point}/${registerId}`)
   }
 
-
   private buildHttpParams(month?: string, year?: number, card?: string, user?: string): HttpParams {
     let params = new HttpParams()
 

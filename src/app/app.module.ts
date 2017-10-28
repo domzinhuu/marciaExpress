@@ -1,3 +1,4 @@
+import { NotifyService } from './providers/notify.service';
 import { MessageService } from './shared/message.service';
 import { LoadingService } from './shared/loading/loading.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,7 +45,8 @@ import { RegisterResumeComponent } from './pages/register-resume/register-resume
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { OnlyLastPipe } from './shared/pipes/only-last.pipe';
 import { CardDetailComponent } from './pages/card-detail/card-detail.component';
-import { LoadingComponent } from './shared/loading/loading.component'
+import { LoadingComponent } from './shared/loading/loading.component';
+import { NotifyComponent } from './pages/notify/notify.component'
 
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
@@ -83,7 +85,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     UserDetailComponent,
     OnlyLastPipe,
     CardDetailComponent,
-    LoadingComponent
+    LoadingComponent,
+    NotifyComponent
   ],
   imports: [
     BrowserModule,
@@ -104,6 +107,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     HomeService,
     LoadingService,
     MessageService,
+    NotifyService,
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
     { provide: ErrorHandler, useClass: ApplicationErrorHandler },
