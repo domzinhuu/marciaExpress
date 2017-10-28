@@ -1,18 +1,59 @@
 <header class="main-header">
+
+  <!-- Logo -->
   <a [routerLink]="['/home']" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">
-      <b>M</b>E</span>
+      <b>M</b>Ex</span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">
-      <i class="fa fa-sellsy fa-lg"></i>
       <b>M</b>arcia
       <b>E</b>xpress</span>
   </a>
 
-  <nav class="navbar navbar-static-top">
+  <!-- Header Navbar -->
+  <nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-      <span class="sr-only">Toggle navegation</span>
+      <span class="sr-only">Toggle navigation</span>
     </a>
+    <!-- Navbar Right Menu -->
+    <div *ngIf="islogged" class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+
+        <!-- Notifications Menu -->
+        <li class="dropdown notifications-menu">
+          <!-- Menu toggle button -->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bell-o"></i>
+            <span class="label label-warning">5</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="header">Você tem 5 novas notificações</li>
+            <li>
+              <!-- Inner Menu: contains the notifications -->
+              <ul class="menu">
+
+                <li>
+                  <a href="#">
+                    <i class="fa fa-users text-aqua"></i> Ok, ainda esta em teste :P
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="footer">
+              <a href="#">Ver todas</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a (click)="logout()" data-toggle="control-sidebar">
+            <i class="fa fa-sign-out"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </header>
