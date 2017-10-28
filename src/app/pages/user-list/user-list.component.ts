@@ -1,3 +1,4 @@
+import { MessageService } from './../../shared/message.service';
 import { LoadingService } from './../../shared/loading/loading.service';
 import _ from 'lodash'
 import { Usuario } from '../../models/usuario.model';
@@ -11,12 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
+  message:string
   usuarios: Usuario[]
 
-  constructor(private usuarioService: UsuarioService,private loadCtrl:LoadingService) { }
+  constructor(private usuarioService: UsuarioService, private loadCtrl: LoadingService,
+    private messageService: MessageService) { }
 
   ngOnInit() {
-    
+    this.message = this.messageService.getMessage()
+    this.messageService.clearMessages()
     this.searchUser();
   }
 

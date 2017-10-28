@@ -1,6 +1,7 @@
 <section class="userlist-section">
 
   <div class="box box-success userlist">
+    <me-message *ngIf="message" [hasSuccess]="'true'" [messages]="[message]"></me-message>
     <div class="box-header with-border">
       <h2 class="box-title">Usuarios Cadastrados</h2>
     </div>

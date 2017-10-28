@@ -1,3 +1,4 @@
+import { MessageService } from './shared/message.service';
 import { LoadingService } from './shared/loading/loading.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeService } from './providers/home.service';
@@ -102,6 +103,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     RegisterService,
     HomeService,
     LoadingService,
+    MessageService,
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
     { provide: ErrorHandler, useClass: ApplicationErrorHandler },

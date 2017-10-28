@@ -18,7 +18,7 @@
           </p>
           <p *ngIf="editUser">Você não pode editar as informações de acesso do usuario, apenas dados pessoais podem ser editado por você</p>
         </div>
-     
+
       </article>
       <me-message [messages]="messages" [hasSuccess]="hasSuccess"></me-message>
     </div>
@@ -38,17 +38,25 @@
       <input formControlName="username" type="text" class="form-control" id="usuario">
     </div>
 
-    <div class="row" *ngIf="!editUser">
+    <div class="row" *ngIf="editUser">
+      <div class="col-sm-12 checkbox text-center">
+        <label>
+          <input formControlName="updatePassword" type="checkbox"> Alterar password do usuario
+        </label>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!editUser || userForm.get('updatePassword').value">
       <div class="col-md-6 col-sm-12">
         <div [class.has-error]="userForm.get('password').hasError('required') && submited" class="form-group">
-          <label for="senha">Senha</label>
-          <input formControlName="password" type="password" class="form-control" id="senha">
+          <label for="senha">{{editUser ? 'Nova' :''}} Senha</label>
+          <input formControlName="password" type="password" [placeholder]="editUser ? '********' : ''" class="form-control" id="senha">
         </div>
       </div>
       <div class="col-md-6 col-sm-12">
         <div [class.has-error]="userForm.get('confirmation').hasError('required') && submited" class="form-group">
           <label for="confirmacao">Confirme a Senha</label>
-          <input formControlName="confirmation" type="password" class="form-control" id="confirmacao">
+          <input formControlName="confirmation" type="password" [placeholder]="editUser ? '********' : ''" class="form-control" id="confirmacao">
 
           <p class="text-danger" *ngIf="userForm.get('confirmation').hasError('passwordMismatch') &&
                                         !userForm.get('confirmation').hasError('required') && submited">
