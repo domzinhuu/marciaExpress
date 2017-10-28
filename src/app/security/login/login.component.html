@@ -15,7 +15,7 @@
             <p class="text-danger text-center" *ngFor="let error of authenticationErrors">{{error}}</p>
           </div>
           <div [class.has-error]="loginForm.get('username').hasError('required') && submited" class="col-xs-12 form-group">
-            <input formControlName="username" type="text" class="form-control input-lg" placeholder="Usuario">
+            <input formControlName="username" type="text" class="no-capitalize form-control input-lg" placeholder="Usuario">
           </div>
 
           <div [class.has-error]="loginForm.get('password').hasError('required') && submited" class="col-xs-12 form-group">
