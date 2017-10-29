@@ -25,7 +25,7 @@
             <td class="text-center">{{cards.indexOf(card) + 1}}</td>
             <td>{{card.name}}</td>
             <td class="text-center text-normal">{{card.number | onlyLast}}</td>
-            <td class="text-center text-normal">{{card.payday}}</td>
+            <td class="text-center text-normal">{{("00"+card.payday).slice(-2)}}</td>
             <td class="text-center">
               <a title="Editar Cartão" [routerLink]="['/cards',card._id]" class="btn btn-success btn-sm">
                 <i class="fa fa-edit"></i>
