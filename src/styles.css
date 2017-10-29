@@ -98,3 +98,7 @@ nav,ul{
 .text-bold{
     font-weight:bold !important;
 }
+
+.pY-5{
+    margin-right: 15px;
+}

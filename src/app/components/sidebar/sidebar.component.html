@@ -1,90 +1,56 @@
 <aside class="main-sidebar">
-  
+
   <section class="sidebar">
 
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">Principais Funções</li>
-
-      <li class="treeview">
-        <a href="">
-          <i class="fa fa-user-circle"></i>
-          <span>Usuarios</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-
-        <ul class="treeview-menu">
-          <li>
-            <a [routerLink]="['/users/add']">
-              <i class="fa fa-plus-circle"></i> add usuario</a>
-          </li>
-          <li>
-            <a [routerLink]="['/users']">
-              <i class="fa fa-list"></i> listar usuario</a>
-          </li>
-        </ul>
+      <li class="header">MENU</li>
+      <li>
+        <a [routerLink]="['/users/add']">
+          <i class="pY-5 fa fa-user-plus"></i> <span>Novo usuario</span></a>
+      </li>
+      <li>
+        <a [routerLink]="['/users']">
+          <i class="pY-5 fa fa-address-card"></i> <span>Lista de usuarios</span></a>
       </li>
 
-      <li class="treeview">
-        <a href="">
-          <i class="fa fa-credit-card"></i>
-          <span>Cartão de credito</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-
-        <ul class="treeview-menu">
-          <li>
-            <a [routerLink]="['/cards/add']"  >
-              <i class="fa fa-plus-circle"></i> novo cartão</a>
-          </li>
-          <li>
-            <a [routerLink]="['/cards']">
-              <i class="fa fa-list"></i> listar cartões</a>
-          </li>
-          <li>
-            <a [routerLink]="['/cards/bills']">
-              <i class="fa fa-credit-card-alt"></i> ver fatura</a>
-          </li>
-        </ul>
+      <li>
+        <a [routerLink]="['/cards/add']">
+          <i class="pY-5 fa fa-credit-card"></i> <span>Novo cartão</span></a>
+      </li>
+      <li>
+        <a [routerLink]="['/cards']">
+          <i class="pY-5 fa fa-list-ul"></i> <span>Lista de cartões</span></a>
       </li>
 
-      <li class="treeview">
-        <a href="">
-          <i class="fa fa-cart-plus"></i>
-          <span>Lançamentos</span>
-
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-
-        <ul class="treeview-menu">
-          <li>
-            <a [routerLink]="['/registers/add']">
-              <i class="fa fa-plus-circle"></i> novo lançamento</a>
-          </li>
-          <li>
-            <a [routerLink]="['/registers']">
-              <i class="fa fa-calendar"></i> lançamentos mensais</a>
-          </li>
-          <li>
-            <a [routerLink]="['/registers/resume']">
-              <i class="fa fa-file-excel-o"></i> Resumo do periodo</a>
-          </li>
-        </ul>
+      <li>
+        <a [routerLink]="['/cards/bills']">
+          <i class="pY-5 fa fa-line-chart"></i> <span>Ver fatura</span></a>
       </li>
 
-      <li><a [routerLink]="['notify']" class="click-cursor">
-        <i class="fa fa-bell"></i>  
-        <span>Notificações</span>
+      <li>
+        <a [routerLink]="['/registers/add']">
+          <i class="pY-5 fa fa-shopping-basket"></i> <span>Novo lançamento</span></a>
+      </li>
 
-        <span class="pull-right-container" *ngIf="notifyService.notifies?.news > 0">
+      <li>
+        <a [routerLink]="['/registers']">
+          <i class="pY-5 fa fa-bank"></i> <span>Resumo mensais</span></a>
+      </li>
+
+      <li>
+        <a [routerLink]="['/registers/resume']">
+          <i class="pY-5 fa fa-percent"></i> <span>Resumo financeiro</span></a>
+      </li>
+
+      <li>
+        <a [routerLink]="['notify']" class="click-cursor">
+          <i class="pY-5 fa fa-bell"></i> <span>Notificações</span>
+
+          <span class="pull-right-container" *ngIf="notifyService.notifies?.news > 0">
             <span class="label pull-right bg-yellow">Nova</span>
           </span>
-      </a></li>
+        </a>
+      </li>
     </ul>
   </section>
 </aside>

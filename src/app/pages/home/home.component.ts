@@ -1,3 +1,5 @@
+import { NotifyContainer } from '../../models/notify.model';
+import { NotifyService } from '../../providers/notify.service';
 import { LoadingService } from './../../shared/loading/loading.service';
 import _ from 'lodash'
 import { HomeService } from './../../providers/home.service';
@@ -12,9 +14,10 @@ export class HomeComponent implements OnInit {
 
   bestUsers: any[] = []
   bestCards: any[] = []
+  notifyContainer:NotifyContainer
   notifications: any[] = []
 
-  constructor(private homeService: HomeService, private loadingCtrl: LoadingService) { }
+  constructor(private homeService: HomeService, private loadingCtrl: LoadingService,public notifyService:NotifyService) { }
 
   ngOnInit() {
     this.loadingCtrl.show()
@@ -28,7 +31,11 @@ export class HomeComponent implements OnInit {
     return new Promise(resolve => {
       this.getBestUsers().then(() => {
         this.getBestCards().then(() => {
-          resolve()
+          this.notifyService.getNotifies(20,false).subscribe(notifies=>{
+            this.notifyContainer = notifies
+            resolve()
+          })
+          
         })
       })
     })

@@ -1,54 +1,5 @@
 <section class="content-principal">
 
-  <div class="funcoes">
-
-    <div class="box box-success funcao usuario">
-      <div class="box-header with-border">
-        <h2 class="home-title">Novo Usuario</h2>
-      </div>
-
-      <div class="box-body">
-        <p>Acesse aqui para adicionar um novo usuario a sua lista de compradores, dessa forma você poderá lançar comprar para
-          ele.
-        </p>
-      </div>
-
-      <div class="box-footer">
-        <a [routerLink]="['/users/add']" class="btn btn-success">Acessar</a>
-      </div>
-    </div>
-
-    <div class="box box-success funcao lancamento">
-      <div class="box-header with-border">
-        <h2 class="home-title">Registre Lançamentos</h2>
-      </div>
-
-      <div class="box-body">
-        <p>Alguem comprou algo com seus cartões? então acesse aqui, lance esta compra e mantenha seu controle dos gastos.</p>
-      </div>
-
-      <div class="box-footer">
-        <a [routerLink]="['/registers/add']" class="btn btn-success ">Acessar</a>
-      </div>
-    </div>
-
-    <div class="box box-success funcao cartao">
-      <div class="box-header with-border">
-        <h2 class="home-title">Cadastre um Cartão</h2>
-      </div>
-
-      <div class="box-body">
-        <p>Para registrar seus lançamentos é necessario ter os cartões cadastrado, então acesse aqui e cadastre um novo cartão.</p>
-      </div>
-
-      <div class="box-footer">
-        <a [routerLink]="['/cards/add']" class="btn btn-success ">Acessar</a>
-      </div>
-    </div>
-
-  </div>
-
-
   <div class="estatisticas">
 
     <div class="box box-success principais">
@@ -130,12 +81,13 @@
       </div>
 
       <div class="box-body">
-        <div *ngFor="let notify of notifications" [class.impar]="notify.usuario.id % 2 != 0" class="list">
-          <span>{{notify.data}}</span>
-          <span class="notify">{{notify.usuario.name}} {{notify.action}}</span>
-          <a href="{{notify.usuario.id}}">Lançar</a>
+        <div *ngFor="let notify of notifyContainer?.notifies">
+          <span>{{notify.registeredAt | date:'dd/MM/yyyy'}} - </span>
+          <span class="notify text-green">{{notify.message}}</span>
         </div>
-        <p *ngIf="notifications.length == 0">Nenhuma notificação recebida.</p>
+        <div><a [routerLink]="['/notify']">Ver todas</a></div>
+        
+        <p *ngIf="notifyContainer?.news == 0">Nenhuma notificação recebida.</p>
       </div>
     </div>
   </div>
