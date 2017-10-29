@@ -49,7 +49,7 @@ export class CardBillComponent implements OnInit {
     this.total = 0
     this.registerService.getRegisters(this.month,this.year,this.cardId).subscribe(regs => {
       this.registers = regs
-      this.registersView = _.map(regs,(item)=>{
+      this.registersView = _.map(_.orderBy(regs,['buyAt'],['desc']),(item)=>{
         let register = new RegisterView(item,this.month,this.year)
         this.total += register.value
         return register

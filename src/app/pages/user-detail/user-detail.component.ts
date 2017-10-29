@@ -55,7 +55,7 @@ export class UserDetailComponent implements OnInit {
     this.total = 0
     this.registerService.getRegisters(this.month, this.year, this.card, this.user._id)
       .subscribe(result => {
-        this.registers = _.map(result, register => {
+        this.registers = _.map(_.orderBy(result,['buyAt'],['desc']), register => {
           let registerView = new RegisterView(register, this.month, this.year)
           this.total += registerView.value
           return registerView

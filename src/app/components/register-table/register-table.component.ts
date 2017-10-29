@@ -1,5 +1,7 @@
 import { RegisterView } from './../../models/register.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import _ from 'lodash'
+
 
 @Component({
   selector: 'me-register-table',

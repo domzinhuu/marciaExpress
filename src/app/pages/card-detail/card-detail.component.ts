@@ -42,7 +42,7 @@ export class CardDetailComponent implements OnInit {
     this.loadCtrl.show()
     this.total = 0
     this.registerService.getRegisters(this.month, this.year, this.card._id).subscribe(result => {
-      this.registers = _.map(result, (item) => {
+      this.registers = _.map(_.orderBy(result,['buyAt'],['desc']), (item) => {
         const register = new RegisterView(item, this.month, this.year)
 
         this.total += register.value

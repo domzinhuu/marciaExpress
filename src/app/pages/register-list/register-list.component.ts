@@ -37,7 +37,7 @@ export class RegisterListComponent implements OnInit {
     this.registerService.getRegisters(this.actualMonth, this.actualYear).subscribe(regs => {
 
       this.total = 0
-      this.registers = _.orderBy(regs, ['buyAt'], ['asc'])
+      this.registers = _.orderBy(regs, ['buyAt'], ['desc'])
       this.registersView = _.map(this.registers, (elem) => {
         let register = new RegisterView(elem, this.actualMonth, this.actualYear)
         this.total += register.value
