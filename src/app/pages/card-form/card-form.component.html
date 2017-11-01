@@ -13,11 +13,24 @@
     </article>
     <me-message [messages]="messages" [hasSuccess]="hasSuccess"></me-message>
 
-    <div [class.has-error]="cardForm.get('name').hasError('required') && submited" class="form-group">
-      <label for="description">Descrição</label>
-      <input formControlName="name" type="text" class="form-control" placeholder="Ex: Credicard Gold - dia 23" id="description">
-    </div>
+    <div class="row">
+      <div class="col-sm-9 col-xs-12">
+        <div [class.has-error]="cardForm.get('name').hasError('required') && submited" class="form-group">
+          <label for="description">Nome</label>
+          <input formControlName="name" type="text" class="form-control" placeholder="Ex: Credicard Gold" id="description">
+        </div>
+    
+      </div>
 
+      <div class="col-sm-3 col-xs-12">
+        <div class="form-group">
+          <label for="description">Descrição</label>
+          <input formControlName="description" type="text" class="form-control" placeholder="Ex: Dia 23" id="description">
+        </div>
+    
+      </div>
+    </div>
+   
     <div [class.has-error]="(cardForm.get('number').hasError('required') || cardForm.get('number').hasError('minlength')) && submited"
       class="form-group">
       <label for="numero">Numero</label>

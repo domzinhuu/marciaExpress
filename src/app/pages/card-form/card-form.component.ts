@@ -58,6 +58,7 @@ export class CardFormComponent implements OnInit {
   private initCardForm() {
     this.cardForm = this.fb.group({
       name: this.fb.control('', Validators.required),
+      description: this.fb.control(''),
       number: this.fb.control('', Validators.compose([Validators.required,Validators.minLength(19)])),
       payday: this.fb.control('', Validators.required),
       limit: this.fb.control(''),
@@ -69,6 +70,7 @@ export class CardFormComponent implements OnInit {
     this.cardForm.setValue({
       _id: this.card._id,
       name: this.card.name,
+      description:this.card.description,
       number: this.card.number,
       payday: this.card.payday,
       limit: this.card.limit,
