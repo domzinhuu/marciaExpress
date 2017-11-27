@@ -58,9 +58,17 @@
           <me-combo-usuario (setUser)="changeUser($event)" [classes]="'form-control'"></me-combo-usuario>
         </div>
 
-        <div [class.has-error]="registerForm.get('paymentMonth').hasError('required') && submited" class="col-sm-6 col-xs-12 form-group">
+        <div [class.has-error]="registerForm.get('paymentMonth').hasError('required') && submited" class="col-sm-4 col-xs-12 form-group">
           <label for="paymentMonth">Pagar em</label>
           <me-combo-mes [idElement]="'paymentMonth'" [classes]="'form-control'" (setPeriod)="changeMonth($event)"></me-combo-mes>
+        </div>
+
+        <div [class.has-error]="registerForm.get('payYear').hasError('required') && submited" class="col-sm-2 col-xs-12 form-group">
+          <label for="paymentYear">Ano</label>
+          <select id="paymentYear" formControlName="payYear" class="form-control">
+            <option selected [value]="yearCombo[0]">{{yearCombo[0]}}</option>
+            <option [value]="yearCombo[1]">{{yearCombo[1]}}</option>
+          </select>
         </div>
 
         <div class="col-sm-12 form-group text-center">

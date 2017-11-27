@@ -18,10 +18,21 @@ export class RegisterFormComponent implements OnInit {
   registerForm: FormGroup
   messages: string[]
   hasSucess: boolean
+  actualYear:number
+  yearCombo:any[] = []
 
-  constructor(private fb: FormBuilder, private registerService: RegisterService,private router:Router,private loadCtrl:LoadingService) { }
+  constructor(private fb: FormBuilder, private registerService: RegisterService,private router:Router,private loadCtrl:LoadingService) { 
+
+  }
 
   ngOnInit() {
+    let actualYear = new Date().getFullYear()
+    this.actualYear = actualYear
+    let nextYear = actualYear + 1
+
+    this.yearCombo.push(actualYear)
+    this.yearCombo.push(nextYear)
+
     this.registerForm = this.fb.group({
       productName: this.fb.control('', Validators.required),
       local: this.fb.control('', Validators.required),
@@ -30,6 +41,7 @@ export class RegisterFormComponent implements OnInit {
       creditCard: this.fb.control('', Validators.required),
       user: this.fb.control('', Validators.required),
       paymentMonth: this.fb.control(MONTHS[new Date().getMonth()], Validators.required),
+      payYear:this.fb.control(2017,Validators.required),
       installmentNumber:this.fb.control(1,Validators.required)
     })
   }
