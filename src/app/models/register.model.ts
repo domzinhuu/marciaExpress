@@ -32,7 +32,7 @@ export class RegisterView {
         this.buyAt = register.buyAt
         this.productName = register.productName
         this.username = register.user.completeName
-        this.cardName = `${register.creditCard.name} / Dia ${register.creditCard.description}`
+        this.cardName = `${register.creditCard.name} / ${register.creditCard.description}`
         this.cardPayDay = register.creditCard.payday
         this.local = register.local
         this.value = (installment.value /100)
