@@ -20,6 +20,7 @@ export class RegisterView {
     productName: string
     username:string
     cardName:string
+    cardPayDay:number
     local: string
     value: number
     valueString:string
@@ -31,7 +32,8 @@ export class RegisterView {
         this.buyAt = register.buyAt
         this.productName = register.productName
         this.username = register.user.completeName
-        this.cardName = register.creditCard.name
+        this.cardName = `${register.creditCard.name} / Dia ${register.creditCard.description}`
+        this.cardPayDay = register.creditCard.payday
         this.local = register.local
         this.value = (installment.value /100)
         this.valueString = (installment.value).toFixed(2)
