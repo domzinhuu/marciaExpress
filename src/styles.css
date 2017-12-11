@@ -102,3 +102,10 @@ nav,ul{
 .pY-5{
     margin-right: 15px;
 }
+.celula-padrao-grande{
+    width: 150px;
+}
+
+.celula-padrao-media{
+    width: 90px;
+}

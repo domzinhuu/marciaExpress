@@ -3,8 +3,9 @@
   <div class="box box-success user-detail-panel">
     <div class="box-header with-border">
       <h2 class="box-title">{{user?.completeName}}</h2>
-      
-      <a [routerLink]="['/users']" class="btn btn-warning btn-sm"><i class="fa fa-chevron-left"></i> Voltar</a>
+
+      <a [routerLink]="['/users']" class="btn btn-warning btn-sm">
+        <i class="fa fa-chevron-left"></i> Voltar</a>
     </div>
 
     <div class="box-body">
@@ -33,24 +34,50 @@
       <div class="search-box pd-top box-footer">
         <form class="form-inline">
           <div class="form-group">
-            <label for="cardId">Cartão</label>
-            <me-combo-cartao (setCard)="setCard($event)" [idElement]="'cardId'" [classes]="'form-control'"></me-combo-cartao>
             <label for="period">Periodo</label>
             <me-combo-mes (setPeriod)="setPeriod($event)" [showYearBox]="'true'" [idElement]="'period'" [classes]="'form-control'"></me-combo-mes>
             <button (click)="updateRegister()" class="btn btn-success btn-sm">
               <i class="fa fa-search"></i> buscar</button>
           </div>
         </form>
+        <hr>
 
-        <me-register-table [registers]="registers" [classes]="'table table-responsive table-bordered table-striped'"></me-register-table>
+        <div style="width: 100%" class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Resumo de Gastos</h3>
+          </div>
+          <div class="panel-body" *ngIf="registers.length > 0">
+            <table class="table table-bordered" *ngFor="let card of registers">
+              <thead>
+                <tr>
+                  <th class="bg-primary" colspan="2">{{card[0].cardName}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th class="celula-padrao-grande">Produto</th>
+                  <th class="celula-padrao-media">Valor</th>
+                </tr>
+                <tr *ngFor="let item of card[0].itens">
+                  <td>
+                    <span class="text-normal text-muted">{{item.actual}}</span> {{item.productName}}</td>
+                  <td class="text-normal">{{item.value | currency:'BRL':true}}</td>
+                </tr>
+
+                <tr class="bg-muted">
+                  <td class="text-bold">Total</td>
+                  <td class="text-normal text-bold">{{card[0].total | currency:'BRL':true}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel-body" *ngIf="registers.length == 0">
+            <p class="text-warning text-bold text-center">Nenhum valor a pagar no periodo selecionado!</p>
+          </div>
+
+        </div>
       </div>
-
-      <div class="box-footer box-bottom">
-        <span>Total: </span>
-        <span class="text-normal">{{total |currency:'BRL':true}}</span>
-      </div>
-
-
     </div>
   </div>
 

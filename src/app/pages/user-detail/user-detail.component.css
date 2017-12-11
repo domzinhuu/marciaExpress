@@ -9,6 +9,23 @@
     padding: 20px;
 }
 
+.text-warning{
+    color: #f39c12;
+}
+.bg-warning{
+    background-color: #f39c12;
+    color:white;
+}
+
+.bg-primary{
+    background-color: #00a65a;
+    color:white;
+}
+
+.bg-muted{
+    background-color: #ddd;
+}
+
 .box-header{
     display: flex;
     justify-content: flex-start;
@@ -36,4 +53,11 @@
 me-register-table{
     width: 100%;
     margin-top: 10px;
+}
+
+.division{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
 }

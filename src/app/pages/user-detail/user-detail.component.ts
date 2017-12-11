@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operator/map';
 import { LoadingService } from './../../shared/loading/loading.service';
 import _ from 'lodash'
 import { RegisterService } from './../../providers/register.service';
@@ -22,16 +23,17 @@ export class UserDetailComponent implements OnInit {
   total: number = 0
   registers: RegisterView[] = []
 
-  constructor(private route: ActivatedRoute, private userService: UsuarioService, private registerService: RegisterService,private loadCtrl:LoadingService) { }
+  constructor(private route: ActivatedRoute, private userService: UsuarioService, private registerService: RegisterService, private loadCtrl: LoadingService) { }
 
   ngOnInit() {
     this.loadCtrl.show()
     this.month = MONTHS[new Date().getMonth()]
     this.year = new Date().getFullYear()
-    
+
     this.userService.getUsuario(this.route.snapshot.params['id']).subscribe(result => {
       this.user = new Usuario(result.data)
       this.loadCtrl.hide()
+      this.updateRegister()
     })
   }
 
@@ -46,20 +48,26 @@ export class UserDetailComponent implements OnInit {
 
 
   updateRegister() {
-    if (!this.card) {
-      alert('É preciso informar um cartão para fazer a busca.')
-      return;
-    }
-    
     this.loadCtrl.show()
     this.total = 0
-    this.registerService.getRegisters(this.month, this.year, this.card, this.user._id)
+    this.registerService.getRegisters(this.month, this.year, undefined, this.user._id)
       .subscribe(result => {
-        this.registers = _.map(_.orderBy(result,['buyAt'],['desc']), register => {
+
+        this.registers = _.map(_.orderBy(result, ['buyAt'], ['desc']), register => {
           let registerView = new RegisterView(register, this.month, this.year)
           this.total += registerView.value
           return registerView
         })
+
+        let agrupped = _.groupBy(this.registers, 'cardName')
+        this.registers = _.map(agrupped, (list) => {
+          return {
+            cardName: list[0].cardName,
+            total: _.sumBy(list, 'value'),
+            itens: list
+          }
+        })
+        this.registers = _.values(_.groupBy(this.registers, 'cardName'))
         this.loadCtrl.hide()
       })
   }
