@@ -34,8 +34,8 @@ import { LoginComponent } from './security/login/login.component';
 import { MessageComponent } from './components/message/message.component';
 
 import { InputMaskModule } from 'ng2-inputmask';
-import { CurrencyMaskModule } from "ng2-currency-mask";
-import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config'
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
 import { ComboUsuarioComponent } from './components/combo-usuario/combo-usuario.component';
 import { ComboCartaoComponent } from './components/combo-cartao/combo-cartao.component';
 import { ComboMesComponent } from './components/combo-mes/combo-mes.component';

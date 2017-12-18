@@ -55,12 +55,12 @@
               </thead>
               <tbody>
                 <tr>
-                  <th class="celula-padrao-grande">Produto</th>
+                  <th class="celula-padrao-grande">Local de compra</th>
                   <th class="celula-padrao-media">Valor</th>
                 </tr>
                 <tr *ngFor="let item of card[0].itens">
                   <td>
-                    <span class="text-normal text-muted">{{item.actual}}</span> {{item.productName}}</td>
+                    <span class="text-normal text-muted">{{item.actual}}</span> {{item.local}}</td>
                   <td class="text-normal">{{item.value | currency:'BRL':true}}</td>
                 </tr>
 

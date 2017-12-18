@@ -23,8 +23,8 @@ export class UserFormComponent implements OnInit {
   messages: string[]
   error: any
 
-  constructor(private userService: UsuarioService, private fb: FormBuilder,private messageService:MessageService,
-     private route: ActivatedRoute,private loadCtrl:LoadingService,private router:Router) { }
+  constructor(private userService: UsuarioService, private fb: FormBuilder, private messageService: MessageService,
+    private route: ActivatedRoute, private loadCtrl: LoadingService, private router: Router) { }
 
   ngOnInit() {
     if (this.route.snapshot.params['id']) {
@@ -36,8 +36,8 @@ export class UserFormComponent implements OnInit {
         cellphone: this.fb.control('', Validators.required),
         username: this.fb.control('', Validators.required),
         password: this.fb.control(''),
-        confirmation: this.fb.control('',SyncValidator.passwordMatch),
-        updatePassword:this.fb.control(false)
+        confirmation: this.fb.control('', SyncValidator.passwordMatch),
+        updatePassword: this.fb.control(false)
       })
     } else {
       this.userForm = this.fb.group({
@@ -59,7 +59,7 @@ export class UserFormComponent implements OnInit {
     this.userService.save(this.userForm.value)
       .subscribe((result: Result) => {
         this.loadCtrl.hide()
-        if(result.updated){
+        if (result.updated) {
           this.messageService.setMessage('Usuario atualiado com sucesso.')
           this.router.navigate(['users'])
           return;
