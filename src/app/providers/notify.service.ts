@@ -26,17 +26,17 @@ export class NotifyService {
       params = params.append('read', read ? 'true' : 'false')
     }
 
-    return this.http.get<NotifyContainer>(`${this.url_api}/notify/all`, { params }).do(notifies =>{
+    return this.http.get<NotifyContainer>(`${this.url_api}/notify/all`, { params }).do(notifies => {
       this.notifies = notifies
     })
   }
 
   markNotify(id: string): Observable<any> {
-    return this.http.put(`${this.url_api}/notify/change`, { id })
+    return this.http.put(`${this.url_api}/notify/${id}`, {});
   }
 
   markAllNotify(): Observable<any> {
-    return this.http.put(`${this.url_api}/notify/check/all`,{})
+    return this.http.put(`${this.url_api}/notify/check/all`, {})
   }
 
   checkNotifyUpdate(): Observable<NotifyContainer> {
