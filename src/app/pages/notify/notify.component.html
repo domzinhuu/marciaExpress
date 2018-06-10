@@ -11,7 +11,7 @@
             <th>Data de envio</th>
             <th>Mensagem</th>
             <th class="text-center" style="width:150px">
-              <p>Marcar como lida</p> 
+              <p>Marcar como lida</p>
               <input [checked]="notifyContainer?.news == 0" [disabled]="notifyContainer?.news == 0" class="check-all" type="checkbox" (click)="changeAllToRead()">
             </th>
           </tr>
@@ -21,7 +21,7 @@
             <td>{{notify.registeredAt | date:'dd/MM/yyyy'}}</td>
             <td [class]="!notify.read? notify.user? 'text-green':'text-yellow' :''">
               <i [class]="notify.user ? 'fa fa-shopping-cart fa-lg' : 'fa fa-user-circle fa-lg' " style="margin-right: 10px"></i>
-              <span [class]="!notify.read? 'text-bold':''">{{notify.message}}</span>
+              <span [class]="!notify.read? 'text-bold text-normal':'text-normal'">{{notify.message}}</span>
               <br>
               <span>{{notify.description}}</span>
             </td>
