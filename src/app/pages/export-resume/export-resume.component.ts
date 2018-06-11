@@ -11,6 +11,7 @@ export class ExportResumeComponent implements OnInit {
   month: string;
   year: number;
   resumeData: any;
+  notIncludeCard = false;
 
   constructor(private registerService: RegisterService) {}
 
@@ -24,8 +25,12 @@ export class ExportResumeComponent implements OnInit {
     this.year = period.year;
   }
 
+  changeCheckbox(): void {
+    this.notIncludeCard = !this.notIncludeCard;
+  }
   doSearch() {
-    this.registerService.getResume(this.month, this.year).then(result => {
+    console.log(this.notIncludeCard);
+    this.registerService.getResume(this.month, this.year, null, this.notIncludeCard).then(result => {
       this.resumeData = result;
     });
   }

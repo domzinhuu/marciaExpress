@@ -24,9 +24,9 @@ export class RegisterService {
     return this.http.get<Register[]>(end_point, { params });
   }
 
-  getResume(month?: string, year?: number, card?: string): Promise<any> {
+  getResume(month?: string, year?: number, card?: string, notIncludeCards = false): Promise<any> {
     return new Promise(resolve => {
-      const params = this.buildHttpParams(month, year, card);
+      const params = this.buildHttpParams(month, year, card, null, notIncludeCards);
       this.http.get<Register[]>(end_point, { params }).subscribe(res => {
         resolve(this.getResumeObject(_.orderBy(res, ['user.completeName'], ['asc'])));
       });
@@ -37,8 +37,9 @@ export class RegisterService {
     return this.http.delete<Result>(`${end_point}/${registerId}`);
   }
 
-  private buildHttpParams(month?: string, year?: number, card?: string, user?: string): HttpParams {
+  private buildHttpParams(month?: string, year?: number, card?: string, user?: string, notIncludeCards: boolean = false): HttpParams {
     let params = new HttpParams();
+    params = params.append('notIncludeCards', notIncludeCards ? 'true' : 'false');
 
     if (month) {
       params = params.append('month', month);

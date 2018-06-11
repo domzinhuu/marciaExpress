@@ -13,6 +13,14 @@
         </div>
         <button (click)="doSearch()" class="btn btn-success btn-sm">
           <i class="fa fa-search fa-lg"></i> buscar</button>
+
+        <br>
+        <div class="form-check" style="margin: 10px 20px">
+          <input (click)="changeCheckbox()" class="form-check-input" [checked]="notIncludeCard" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            Não Incluir cartões dia 20
+          </label>
+        </div>
       </form>
     </div>
 
@@ -41,7 +49,7 @@
       <table class="table table-responsive">
         <tr class="footer-total">
           <td style="width:20%">Total</td>
-          <td style="width:35%" class="text-normal">{{(resumeData?.total/100 | currency:'BRL':true)}}</td>
+          <td style="width:40%" class="text-normal">{{(resumeData?.total/100 | currency:'BRL':true)}}</td>
         </tr>
       </table>
     </div>
