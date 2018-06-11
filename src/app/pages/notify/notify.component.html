@@ -25,8 +25,8 @@
               <br>
               <span>{{notify.description}}</span>
             </td>
-            <td (click)="changeNotifyStatus(notify._id)" class="text-center">
-                <input [checked]="notify.read" type="checkbox">
+            <td class="text-center">
+                <input  (click)="changeNotifyStatus(notify._id)" [checked]="notify.read" type="checkbox">
             </td>
           </tr>
         </tbody>

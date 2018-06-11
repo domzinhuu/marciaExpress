@@ -13,25 +13,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-form.component.css']
 })
 export class RegisterFormComponent implements OnInit {
+  submited: boolean;
+  registerForm: FormGroup;
+  messages: string[];
+  hasSucess: boolean;
+  actualYear: number;
+  yearCombo: any[] = [];
 
-  submited: boolean
-  registerForm: FormGroup
-  messages: string[]
-  hasSucess: boolean
-  actualYear:number
-  yearCombo:any[] = []
-
-  constructor(private fb: FormBuilder, private registerService: RegisterService,private router:Router,private loadCtrl:LoadingService) { 
-
-  }
+  // tslint:disable-next-line:max-line-length
+  constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router, private loadCtrl: LoadingService) {}
 
   ngOnInit() {
-    let actualYear = new Date().getFullYear()
-    this.actualYear = actualYear
-    let nextYear = actualYear + 1
+    const actualYear = new Date().getFullYear();
+    this.actualYear = actualYear;
+    const nextYear = actualYear + 1;
 
-    this.yearCombo.push(actualYear)
-    this.yearCombo.push(nextYear)
+    this.yearCombo.push(actualYear);
+    this.yearCombo.push(nextYear);
 
     this.registerForm = this.fb.group({
       productName: this.fb.control('', Validators.required),
@@ -41,44 +39,49 @@ export class RegisterFormComponent implements OnInit {
       creditCard: this.fb.control('', Validators.required),
       user: this.fb.control('', Validators.required),
       paymentMonth: this.fb.control(MONTHS[new Date().getMonth()], Validators.required),
-      payYear:this.fb.control(2017,Validators.required),
-      installmentNumber:this.fb.control(1,Validators.required)
-    })
+      payYear: this.fb.control(2017, Validators.required),
+      installmentNumber: this.fb.control(1, Validators.required)
+    });
   }
 
   addRegister() {
-    this.loadCtrl.show()
-    this.submited = true
-    if (this.registerForm.invalid) return;
+    this.loadCtrl.show();
+    this.submited = true;
+    if (this.registerForm.invalid) {
+      this.loadCtrl.hide();
+      return;
+    }
 
-    this.registerService.addRegister(this.registerForm.value).subscribe(result => {
-      this.router.navigate(['/saved'])
-
-    }, (fail: Result) => {
-      this.messages = fail.messages
-      this.hasSucess = false
-    },()=>{
-      this.loadCtrl.hide()
-    })
+    this.registerService.addRegister(this.registerForm.value).subscribe(
+      result => {
+        this.router.navigate(['/saved']);
+      },
+      (failError: Result) => {
+        this.loadCtrl.hide();
+        this.messages = failError.messages;
+        this.hasSucess = false;
+      },
+      () => {
+        this.loadCtrl.hide();
+      }
+    );
   }
 
   changeUser(userId: string) {
     this.registerForm.patchValue({
       user: userId
-    })
+    });
   }
 
   changeCard(cardId: string) {
     this.registerForm.patchValue({
       creditCard: cardId
-    })
+    });
   }
 
   changeMonth(period: any) {
     this.registerForm.patchValue({
       paymentMonth: period.month
-    })
+    });
   }
-
-
 }

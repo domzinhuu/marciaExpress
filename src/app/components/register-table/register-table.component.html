@@ -1,31 +1,33 @@
 <table [class]="classes">
-    <thead>
-      <tr>
-        <th>Data Compra</th>
-        <th>Produto</th>
-        <th>Local da compra</th>
-        <th *ngIf="showUserColumn">Usuario</th>
-        <th *ngIf="showCardColumn">Cartão</th>
-        <th>Valor</th>
-        <th class="text-center" *ngIf="showOptionsColumn">Opções</th>
-      </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Data Compra</th>
+      <th>Produto</th>
+      <th>Local da compra</th>
+      <th *ngIf="showUserColumn">Usuario</th>
+      <th *ngIf="showCardColumn">Cartão</th>
+      <th>Valor</th>
+      <th class="text-center" *ngIf="showOptionsColumn">Opções</th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <tr *ngFor="let register of registers">
-        <td>{{register.buyAt | date:'dd/MM/yyyy'}}</td>
-        <td>
-          <span class="text-muted capitalize">{{register.actual}}</span> {{register.productName}}</td>
-        <td class="capitalize">{{register.local}}</td>
-        <td *ngIf="showUserColumn">{{register.username}}</td>
-        <td *ngIf="showCardColumn">{{register.cardName}}</td>
-        <td class="text-normal">{{register.value | currency:'BRL':true}}</td>
-        <td *ngIf="showOptionsColumn" class="text-center">
-          <button (click)="deleteRegisterEmit(register.id)" class="btn btn-danger btn-xs" title="Deletar Lançamento"><i class="fa fa-remove"></i></button>
-        </td>
-      </tr>
-      <tr *ngIf="registers?.length == 0">
-          <td colspan="7" class="text-center">Nenhum registro encontrado, utilize o filtro e faça uma nova busca.</td>
-      </tr>
-    </tbody>
-  </table>
+  <tbody>
+    <tr *ngFor="let register of registers">
+      <td>{{register.buyAt | date:'dd/MM/yyyy'}}</td>
+      <td>
+        <span class="text-muted capitalize">{{register.actual}}</span> {{register.productName}}</td>
+      <td class="capitalize">{{register.local}}</td>
+      <td *ngIf="showUserColumn">{{register.username}}</td>
+      <td *ngIf="showCardColumn">{{register.cardName}}</td>
+      <td class="text-normal">{{register.value | currency:'BRL':true}}</td>
+      <td *ngIf="showOptionsColumn" class="text-center">
+        <button (click)="deleteRegisterEmit(register.id)" class="btn btn-danger btn-xs" title="Deletar Lançamento">
+          <i class="fa fa-remove"></i>
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="registers?.length == 0">
+      <td colspan="7" class="text-center">Nenhum registro encontrado, utilize o filtro e faça uma nova busca.</td>
+    </tr>
+  </tbody>
+</table>

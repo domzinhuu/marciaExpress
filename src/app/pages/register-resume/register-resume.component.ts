@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _ from 'lodash';
 import { MONTHS } from '../../utils/variables.utils';
 import { RegisterService } from '../../providers/register.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,37 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-resume.component.css']
 })
 export class RegisterResumeComponent implements OnInit {
+  cardId: string;
+  month: string;
+  year: number;
+  resumeData: any;
 
-  cardId:string
-  month:string
-  year:number
-  resumeData:any
-
-  constructor(private registerService:RegisterService) { }
+  constructor(private registerService: RegisterService) {}
 
   ngOnInit() {
-    this.month = MONTHS[new Date().getMonth()]
-    this.year = new Date().getFullYear()
+    this.month = MONTHS[new Date().getMonth()];
+    this.year = new Date().getFullYear();
   }
 
-  setCard(cardId:string){
-    this.cardId = cardId
+  setCard(cardId: string) {
+    this.cardId = cardId;
   }
 
-  setPeriod(period:any){
-    this.month = period.month
-    this.year = period.year
+  setPeriod(period: any) {
+    this.month = period.month;
+    this.year = period.year;
   }
 
-  doSearch(){
-    if(!this.cardId){
-      alert('Selecione um cartão primeiro')
+  doSearch() {
+    if (!this.cardId) {
+      alert('Selecione um cartão primeiro');
       return;
     }
-    
-    this.registerService.getResume(this.month,this.year,this.cardId)
-    .then(result =>{
-        this.resumeData = result
-    })
+
+    this.registerService.getResume(this.month, this.year, this.cardId).then(result => {
+      this.resumeData = result;
+    });
   }
 }

@@ -1,0 +1,51 @@
+<section class="resume-section">
+  <div class="box box-success resume-panel">
+    <div class="box-header with-border">
+      <h2 class="box-title">Exportar Resumo Financeiro</h2>
+    </div>
+
+    <div class="box-body">
+
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="period" class="search-label">Periodo</label>
+          <me-combo-mes [showYearBox]="true" (setPeriod)="setPeriod($event)" [idElement]="'period'" [classes]="'form-control'"></me-combo-mes>
+        </div>
+        <button (click)="doSearch()" class="btn btn-success btn-sm">
+          <i class="fa fa-search fa-lg"></i> buscar</button>
+      </form>
+    </div>
+
+    <div class="box-footer">
+
+      <table class="table-responsive table-bordered" *ngIf="resumeData && resumeData.resumes.length > 0">
+        <thead>
+          <tr>
+            <th>Nome do Usuario</th>
+            <th></th>
+            <th>Valor do Mês</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let resume of resumeData?.resumes">
+            <td style="width:20%">{{resume[0].user}}</td>
+            <td style="width:50%">-----------------------------------------</td>
+            <td style="width:30%;" class="text-normal"> {{(resume.total/100) | currency:'BRL':true}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="resumeData && resumeData.resumes.length == 0" class="text-center">Nenhum dado disponivel neste periodo, faça uma nova pesquisa.</p>
+      <p *ngIf="!resumeData" class="text-center">Nenhum dado disponivel, faça uma nova pesquisa.</p>
+    </div>
+    <div *ngIf="resumeData && resumeData.resumes.length > 0" class="box-footer">
+      <table class="table table-responsive">
+        <tr class="footer-total">
+          <td style="width:20%">Total</td>
+          <td style="width:35%" class="text-normal">{{(resumeData?.total/100 | currency:'BRL':true)}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+</section>

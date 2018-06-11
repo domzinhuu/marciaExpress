@@ -1,7 +1,6 @@
 import { RegisterView } from './../../models/register.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import _ from 'lodash'
-
+import _ from 'lodash';
 
 @Component({
   selector: 'me-register-table',
@@ -9,22 +8,19 @@ import _ from 'lodash'
   styleUrls: ['./register-table.component.css']
 })
 export class RegisterTableComponent implements OnInit {
+  @Input() classes: string;
+  @Input() registers: RegisterView[] = [];
+  @Input() showCardColumn: boolean;
+  @Input() showUserColumn: boolean;
+  @Input() showOptionsColumn: boolean;
 
-  @Input() classes: string
-  @Input() registers: RegisterView[] = []
-  @Input() showCardColumn: boolean
-  @Input() showUserColumn: boolean
-  @Input() showOptionsColumn: boolean
+  @Output() deleteRegister = new EventEmitter();
 
-  @Output() deleteRegister = new EventEmitter()
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  deleteRegisterEmit(registerId: string) {
+    this.deleteRegister.emit(registerId);
   }
-
-  deleteRegisterEmit(registerId:string){
-    this.deleteRegister.emit(registerId)
-  }
-
 }

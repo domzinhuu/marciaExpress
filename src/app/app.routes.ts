@@ -13,31 +13,30 @@ import { NotifyComponent } from './pages/notify/notify.component';
 import { CardDetailComponent } from './pages/card-detail/card-detail.component';
 import { RegisterFormComponent } from './pages/register-form/register-form.component';
 import { HomeComponent } from './pages/home/home.component';
-import { Routes } from '@angular/router'
-
-
-
+import { Routes } from '@angular/router';
+import { ExportResumeComponent } from './pages/export-resume/export-resume.component';
 
 export const ROUTES: Routes = [
-    { path: '', redirectTo: "/home", pathMatch: 'full' },
-    { path: 'login/:to', component: LoginComponent },
-    { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'login/:to', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
 
-    // Rotas protegidas
-    { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard] },
-    { path: 'saved', component: RegisterSavedComponent, canActivate: [LoggedInGuard] },
-    { path: 'users/add', component: UserFormComponent, canActivate: [LoggedInGuard] },
-    { path: 'users/details/:id', component: UserDetailComponent, canActivate: [LoggedInGuard] },
-    { path: 'users/edit/:id', component: UserFormComponent, canActivate: [LoggedInGuard] },
-    { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard] },
-    { path: 'cards/add', component: CardFormComponent, canActivate: [LoggedInGuard] },
-    { path: 'cards/bills', component: CardBillComponent, canActivate: [LoggedInGuard] },
-    { path: 'cards/:id', component: CardFormComponent, canActivate: [LoggedInGuard] },
-    { path: 'cards/detail/:id', component: CardDetailComponent, canActivate: [LoggedInGuard] },
-    { path: 'cards', component: CardListComponent, canActivate: [LoggedInGuard] },
-    { path: 'registers/add', component: RegisterFormComponent, canActivate: [LoggedInGuard] },
-    { path: 'registers/resume', component: RegisterResumeComponent, canActivate: [LoggedInGuard] },
-    { path: 'registers', component: RegisterListComponent, canActivate: [LoggedInGuard] },
-    { path: 'notify', component: NotifyComponent, canActivate: [LoggedInGuard] },
-    // Fim das rotas Protegidas
-]
+  // Rotas protegidas
+  { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard] },
+  { path: 'saved', component: RegisterSavedComponent, canActivate: [LoggedInGuard] },
+  { path: 'users/add', component: UserFormComponent, canActivate: [LoggedInGuard] },
+  { path: 'users/details/:id', component: UserDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'users/edit/:id', component: UserFormComponent, canActivate: [LoggedInGuard] },
+  { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard] },
+  { path: 'cards/add', component: CardFormComponent, canActivate: [LoggedInGuard] },
+  { path: 'cards/bills', component: CardBillComponent, canActivate: [LoggedInGuard] },
+  { path: 'cards/:id', component: CardFormComponent, canActivate: [LoggedInGuard] },
+  { path: 'cards/detail/:id', component: CardDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'cards', component: CardListComponent, canActivate: [LoggedInGuard] },
+  { path: 'registers/add', component: RegisterFormComponent, canActivate: [LoggedInGuard] },
+  { path: 'registers/resume', component: RegisterResumeComponent, canActivate: [LoggedInGuard] },
+  { path: 'registers/export', component: ExportResumeComponent, canActivate: [LoggedInGuard] },
+  { path: 'registers', component: RegisterListComponent, canActivate: [LoggedInGuard] },
+  { path: 'notify', component: NotifyComponent, canActivate: [LoggedInGuard] }
+  // Fim das rotas Protegidas
+];
