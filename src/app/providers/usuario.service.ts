@@ -11,36 +11,32 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UsuarioService {
+  endPoint = `${ME_API}/users`;
 
-  endPoint = `${ME_API}/users`
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   save(usuario: Usuario): Observable<Result> {
     if (usuario._id) {
-      return this.http.put<Result>(this.endPoint, usuario)
+      return this.http.put<Result>(this.endPoint, usuario);
     }
 
-    return this.http.post<Result>(this.endPoint, usuario)
+    return this.http.post<Result>(this.endPoint, usuario);
   }
 
   usuarios(query: string = '', active?: boolean): Observable<Result> {
-
-    let params = new HttpParams().set('query', query)
-    if (active != undefined) {
-      params = params.append('active', active ? 'true' : 'false')
+    let params = new HttpParams().set('query', query);
+    if (active !== undefined) {
+      params = params.append('active', active ? 'true' : 'false');
     }
 
-    return this.http.get<Result>(this.endPoint, { params })
+    return this.http.get<Result>(this.endPoint, { params });
   }
 
   changeStatus(id: string): Observable<Result> {
-    return this.http.put<Result>(`${this.endPoint}/status/${id}`, {})
+    return this.http.put<Result>(`${this.endPoint}/status/${id}`, {});
   }
 
   getUsuario(id: string): Observable<Result> {
-    return this.http.get<Result>(`${this.endPoint}/${id}`)
+    return this.http.get<Result>(`${this.endPoint}/${id}`);
   }
-
 }
