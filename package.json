@@ -30,7 +30,7 @@
     "express": "^4.16.2",
     "font-awesome": "^4.7.0",
     "intl": "^1.2.5",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.4",
     "ng2-currency-mask": "^4.4.0",
     "ng2-inputmask": "^0.2.5",
