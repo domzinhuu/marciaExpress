@@ -5,13 +5,11 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
-    "start": "pm2 start server.js",
-    "stop": "pm2 stop server.js",
-    "build": "ng build",
+    "start": "lite-server --baseDir=dist/",
+    "build": "ng b --aot -prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "prestart": "ng b --aot -prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

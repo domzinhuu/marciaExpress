@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  mongo:
+    container_name: mongodb
+    image: mongo:4.4.15
+    ports:
+      - 27017:27017
+    networks:
+      - primeira-network
+    volumes:
+      - db:/data/db
+      - ./backup/db.dump:/db.dump
+      - ./docker-entrypoint-initdb.d/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh
+
+
+  api-mex:
+    container_name: api-mex
+    image: domzinhuu/mex-api:v2
+    ports:
+      - 3005:3005
+    depends_on:
+      - mongo
+    networks:
+      - primeira-network
+
+  app:
+    container_name: app
+    build:
+      context: .
+    ports:
+      - 4200:80
+
+networks:
+  primeira-network:
+    driver: bridge
+
+volumes:
+  db:
+    name: db
